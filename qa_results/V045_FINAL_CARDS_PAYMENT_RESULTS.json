@@ -1,0 +1,29 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.5",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "base": {
+    "package": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.4_VERIFIED.zip",
+    "size_bytes": 243415163,
+    "sha256": "9336c86299249603c5bdf729931ca51c2f64211032a642c65a44ffe78af0455a"
+  },
+  "automated_regression": {
+    "result": "PASS",
+    "tests_passed": 123,
+    "tests_failed": 0,
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS"
+  },
+  "verified": [
+    "tipografía y alturas uniformes del grupo telefónico",
+    "selector compacto sin nombres visibles ni banderas",
+    "nombre completo íntegro en revisión pre-pago",
+    "nombre no canónico y correo válido fuera de dominios example",
+    "teléfono vacío, completo, parcial y recuperación",
+    "condición aclarada sin cambiar alcance",
+    "pago pendiente con copy público simplificado",
+    "confirmación privada QA",
+    "orden única ante confirmación repetida",
+    "snapshot inmutable y vista previa no enviada"
+  ],
+  "external_operations": "NONE"
+}

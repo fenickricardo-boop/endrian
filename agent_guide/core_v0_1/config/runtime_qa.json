@@ -1,0 +1,12 @@
+{
+  "name": "ENDRIAN Agente Guía MVP QA",
+  "version": "0.1",
+  "mode": "QA / NO PRODUCCIÓN",
+  "simulation_required": true,
+  "matrix_complete_state": "MATRIZ QA COMPLETA / APTA PARA EVALUACIÓN",
+  "forbidden_production_capabilities": [
+    "registro real", "verificación real de correo", "precios comerciales ENDRIAN", "pasarela de pago",
+    "correos reales", "órdenes productivas", "integración con Laboratorio productivo", "despliegue/publicación"
+  ],
+  "source": "ENDRIAN_AGENTE_GUIA_CONTRATO_FUNCIONAL_MVP_v1.1.docx"
+}

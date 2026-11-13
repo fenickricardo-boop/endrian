@@ -1,0 +1,37 @@
+{
+  "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.2",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "executed_at_utc": "2026-10-07T12:08:02Z",
+  "origin": {
+    "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.1.zip",
+    "sha256": "b5e7f76f5c7ce72b9d320561b786d1d970fb32785e1790a3c34af286f0a09da7"
+  },
+  "checks": {
+    "python_tests": {"command": "python -m pytest -q", "result": "PASS", "passed": 73, "failed": 0},
+    "javascript_syntax": {"command": "node --check frontend/app.js", "result": "PASS"},
+    "python_compile": {"command": "python -m py_compile app/*.py", "result": "PASS"},
+    "local_http_smoke": {"result": "PASS", "index_bytes": 9340, "initial_state": "S1"},
+    "chat_only_intake": "PASS",
+    "professional_output_only": "PASS",
+    "agent_deferred_until_proposal": "PASS",
+    "single_contact_consent": "PASS",
+    "simplified_proposal": "PASS",
+    "optional_note_empty": "PASS",
+    "optional_note_non_material": "PASS",
+    "optional_note_material_or_uncertain": "PASS",
+    "scope_and_quotation_versioning": "PASS",
+    "payment_gate_regression": "PASS",
+    "idempotency_regression": "PASS",
+    "recovery_regression": "PASS",
+    "no_transcript_leakage": "PASS",
+    "canonical_delivery_chain": "PASS",
+    "visible_qa_language_removed": "PASS",
+    "no_external_service_required": "PASS"
+  },
+  "canonical_values": {
+    "amount": "$123.456 CLP",
+    "delivery_window": "2 a 5 días hábiles"
+  },
+  "warning": "Starlette TestClient emitted one dependency deprecation warning; no functional failure.",
+  "proposed_status": "READY_FOR_EDUARDO_LIA_REVIEW"
+}

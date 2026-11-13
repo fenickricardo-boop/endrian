@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "ready": true,
+  "health_http_200": true,
+  "returncode": 0,
+  "port_released": true,
+  "bat_contract": "START_LAB_QA.bat calls start_lab_qa.py from its own directory; Python launcher opens default browser after /health is ready and terminates Uvicorn in finally.",
+  "output": "INFO:     Started server process [2184]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)\nINFO:     127.0.0.1:42810 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     Shutting down\nINFO:     Waiting for application shutdown.\nINFO:     Application shutdown complete.\nINFO:     Finished server process [2184]\nENDRIAN Laboratorio QA v0.2 — NO PRODUCCIÓN\nIniciando servidor local…\n\nCerrando servidor QA…\nServidor QA detenido. No quedan procesos de este lanzador en ejecución.\n"
+}

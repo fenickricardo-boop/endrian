@@ -1,0 +1,67 @@
+{
+  "candidate": "ENDRIAN_LAB_AGENTES_QA_v0.1.2",
+  "viewport": "390x844",
+  "checks": [
+    {
+      "id": "MV01",
+      "name": "Explorar agentes no colisiona con saludo inicial",
+      "status": "PASS",
+      "evidence": "MOBILE_AFTER_TALK_WITH_ENDRIAN_390x844.png"
+    },
+    {
+      "id": "MV02",
+      "name": "Franja QA envuelve texto sin corte horizontal",
+      "status": "PASS",
+      "evidence": "MOBILE_SELECTOR_COMPLETE_390x844.png"
+    },
+    {
+      "id": "MV03",
+      "name": "Tarjeta Agente seleccionado crece verticalmente sin superposición",
+      "status": "PASS",
+      "evidence": "MOBILE_AFTER_TALK_WITH_ENDRIAN_390x844.png"
+    },
+    {
+      "id": "MV04",
+      "name": "Acción Cambiar permanece separada de nombre y texto",
+      "status": "PASS",
+      "evidence": "MOBILE_AFTER_TALK_WITH_ENDRIAN_390x844.png"
+    },
+    {
+      "id": "MV05",
+      "name": "Botones de ruta se apilan en ancho reducido",
+      "status": "PASS",
+      "evidence": "MOBILE_ROUTE_STACKED_ACTIONS_390x844.png"
+    },
+    {
+      "id": "MV06",
+      "name": "Tarjetas del selector crecen según copy completo",
+      "status": "PASS",
+      "evidence": "MOBILE_SELECTOR_COMPLETE_390x844.png"
+    },
+    {
+      "id": "MV07",
+      "name": "Ficha Mobile conserva scroll interno y footer accesible",
+      "status": "PASS",
+      "evidence": "MOBILE_DETAIL_AVANZADO_390x844_v012.png"
+    },
+    {
+      "id": "MV08",
+      "name": "Cuatro identificadores completos y contrastados",
+      "status": "PASS",
+      "evidence": "MOBILE_IDENTIFIERS_ALL_390x844.png"
+    },
+    {
+      "id": "MV09",
+      "name": "Sin overflow horizontal por contrato CSS",
+      "status": "PASS",
+      "evidence": "tests/test_agents_mobile_visual_contract_v012.py"
+    },
+    {
+      "id": "MV10",
+      "name": "Header Desktop contiene un único source del wordmark ENDRIAN",
+      "status": "PASS",
+      "evidence": "DESKTOP_HEADER_WORDMARK_SINGLE_1440x900.png"
+    }
+  ],
+  "pytest": "36/36 PASS"
+}

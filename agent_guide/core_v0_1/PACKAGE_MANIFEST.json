@@ -1,0 +1,69 @@
+{
+  "package": "ENDRIAN_AGENTE_GUIA_MVP_QA_v0.1",
+  "state": "CONTROL CORE PRESERVED / REV1 QA HARNESS NON-DESTRUCTIVE / QA / NO PRODUCCIÓN",
+  "control_core_sha256": "915ea83f85f025c6c84177b8b91646d2d379fea3bb38899442324a1d8ea934d2",
+  "control_core_expected_sha256": "915ea83f85f025c6c84177b8b91646d2d379fea3bb38899442324a1d8ea934d2",
+  "rev1_scope": "Only QA harness behavior was changed inside core_v0_1; candidate/guide_agent.py remains byte-identical.",
+  "files": [
+    {
+      "path": "candidate/guide_agent.py",
+      "sha256": "915ea83f85f025c6c84177b8b91646d2d379fea3bb38899442324a1d8ea934d2",
+      "bytes": 20677
+    },
+    {
+      "path": "config/runtime_qa.json",
+      "sha256": "8628044ff573c43463fc0a8a192edd6f1e2c41029cac817384a03b6c0d86d4c5",
+      "bytes": 534
+    },
+    {
+      "path": "docs/ARCHITECTURE_AND_MATRIX.md",
+      "sha256": "3a9e960bcc48dda7513e455ccc213bf8aaf8cd609ebb0a9c172c2748373ba05d",
+      "bytes": 2387
+    },
+    {
+      "path": "docs/PENDING_AND_DEFECTS.md",
+      "sha256": "afbf7b6e3fece865f45cf79185480e0e269cead43b74f153d31ee094c3ae0d7d",
+      "bytes": 1409
+    },
+    {
+      "path": "docs/README_START_HERE.md",
+      "sha256": "c4533f972ab9340963114489b4377a13f8255b435ae69b7a80d4155732f59ae6",
+      "bytes": 642
+    },
+    {
+      "path": "docs/SOURCE_AUTHORITY.md",
+      "sha256": "2173d814e5c9ae0a0b6ec0b93013fbe6638252f52209b8b3c33fef8c908f2bda",
+      "bytes": 1036
+    },
+    {
+      "path": "docs/VALERIA_INTEGRATION_CONTRACT.md",
+      "sha256": "4042887e5ba4aacdb677c1d37bb0f98546c431d267529f623f81d971d96cfcf7",
+      "bytes": 2268
+    },
+    {
+      "path": "fixtures/qa_fixtures.json",
+      "sha256": "3ee77195efbfe498d7b0379c1c3f791c5ee864db00aeb710e74fde282b70b2e6",
+      "bytes": 789
+    },
+    {
+      "path": "qa/logs/QA_EXECUTION_LOG.txt",
+      "sha256": "c7dd6345f68c38c32966100363a2935df125de52de7f816c031522573add2af0",
+      "bytes": 280
+    },
+    {
+      "path": "qa/results/AGG_QA01_QA20_RESULTS.json",
+      "sha256": "6e79d6115fc16ee26b46df30a6c2f90718021a56dbee281a1727d0527630f851",
+      "bytes": 14940
+    },
+    {
+      "path": "qa/results/QA_REPORT.md",
+      "sha256": "d0bc08b7490995b7b2afd2eb1114d2947beef11466ad8f47c9bfbc53fbad8c19",
+      "bytes": 12862
+    },
+    {
+      "path": "qa/run_qa.py",
+      "sha256": "60de833243fdad775b1ee67dc915dca14a7c4541f6a913569f32f1471865e0e0",
+      "bytes": 11595
+    }
+  ]
+}

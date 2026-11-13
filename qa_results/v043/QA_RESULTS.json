@@ -1,0 +1,33 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.3",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "baseline": {
+    "name": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.2.zip",
+    "sha256": "c5c5367867a8421452ed3257ee88eb07ad87035ea0fad9ac4b89e0b65b4ecd9c",
+    "preserved": true
+  },
+  "automated_results": {
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS",
+    "pytest": {"passed": 120, "failed": 0},
+    "distinct_synthetic_contacts": "PASS",
+    "optional_phone_empty": "PASS",
+    "authorized_phone_samples": "PASS",
+    "partial_phone_recovery": "PASS",
+    "email_error_differentiation": "PASS",
+    "http_422_retry_same_session": "PASS",
+    "structured_error_rendering_contract": "PASS"
+  },
+  "visual_results": {
+    "desktop": "BLOCKED_NO_LOCAL_BROWSER",
+    "mobile": "BLOCKED_NO_LOCAL_BROWSER",
+    "screenshots": "NOT_GENERATED"
+  },
+  "boundaries": {
+    "real_ai": false,
+    "real_email": false,
+    "real_payment": false,
+    "production": false,
+    "published": false
+  }
+}

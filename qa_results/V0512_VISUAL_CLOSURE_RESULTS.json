@@ -1,0 +1,30 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.12",
+  "baseline": {
+    "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.11",
+    "size_bytes": 243461045,
+    "sha256": "532465c710756551d9e3e90aadc8476d38cb30c6d0d8b5cd43512f47ce2564c3",
+    "integrity": "PASS"
+  },
+  "scope": "Localized typography hierarchy and Contact spacing only",
+  "checks": {
+    "pytest": {"passed": 173, "failed": 0},
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS",
+    "http_root": 200,
+    "http_stylesheet": 200,
+    "http_health": 200,
+    "application_version": "0.5.12",
+    "prices_bottom_close_absent": true,
+    "prices_top_close_preserved": true,
+    "services_and_prices_content_preserved": true,
+    "contact_fields_and_validation_contract_preserved": true,
+    "browser_visual_desktop": "PENDING_NO_LOCAL_BROWSER_EXECUTABLE",
+    "browser_visual_mobile": "PENDING_NO_LOCAL_BROWSER_EXECUTABLE"
+  },
+  "notes": [
+    "The declared Inter font stack was preserved. No webfont is bundled or loaded by the application.",
+    "The remote browser could not reach the local QA server, and the build environment had no local browser executable.",
+    "No interactive visual PASS is claimed; supplied screenshots remain the baseline visual evidence."
+  ]
+}

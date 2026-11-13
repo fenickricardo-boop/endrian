@@ -1,0 +1,25 @@
+INFO:     Started server process [5]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8050 (Press CTRL+C to quit)
+INFO:     127.0.0.1:44538 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/confirmation/action HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/proposal/action HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/registration HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/contracting HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/payment/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/payment/return HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "GET /api/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/qa-control/payment/resolve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/qa-control/payment/resolve HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:44544 - "GET /api/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "POST /api/full-flow/conversation/finalize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "GET /api/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44544 - "GET /api/qa-control/orders/END-20261012-0001 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [5]

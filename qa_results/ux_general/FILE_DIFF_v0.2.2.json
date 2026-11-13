@@ -1,0 +1,19 @@
+{
+  "modified": [
+    "README.md",
+    "README_LOCAL_QA.md",
+    "config/ui_copy.json",
+    "frontend/app.js",
+    "frontend/index.html",
+    "frontend/styles.css"
+  ],
+  "added": [
+    "docs/UX_GENERAL_DELTA_v0.2.2.md",
+    "qa_results/ux_general/UX_GENERAL_QA_v0.2.2.json",
+    "qa_results/ux_general/node_check_v0.2.2.txt",
+    "qa_results/ux_general/pytest_v0.2.2.txt",
+    "tests/test_ux_general_v022.py"
+  ],
+  "removed": [],
+  "backend_and_agent_guide_byte_identical": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "COPY PROVISIONAL / QA / NO PRODUCCIÓN",
+  "greeting": "Hola, soy el Agente Guía de ENDRIAN. Cuéntame qué quieres conseguir, mejorar o resolver y te ayudaré a aclarar qué necesitas.",
+  "placeholder": "Escribe aquí qué quieres resolver...",
+  "composer_help": "Puedes contarme un problema, una idea o un objetivo con tus propias palabras. No necesitas saber qué servicio o solución pedir.",
+  "privacy_warning": "Entorno QA. No ingreses datos personales, confidenciales o sensibles reales.",
+  "prices": {
+    "title": "Precios según tu necesidad",
+    "intro": "El valor depende del alcance, las integraciones y el nivel de personalización. El Agente Guía te ayudará a dimensionar tu necesidad antes de presentar una propuesta.",
+    "note": "Panel informativo y provisional. No clasifica, no fija precio y no habilita pago."
+  },
+  "contact": {
+    "title": "Contacto",
+    "qa_note": "Revisión local: utiliza datos ficticios. Este formulario no envía ni almacena información."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "status": "COPY PÚBLICO v1.4.1 / PRECIOS PENDIENTES / QA / NO PRODUCCIÓN",
+  "cta": "Hablar con ENDRIAN",
+  "cta_transition": "Antes del pago, ENDRIAN confirma contigo el alcance, el entorno, los servicios externos y las condiciones de entrega.",
+  "selection_message": "Tendré en cuenta esta alternativa mientras conversamos sobre tu necesidad.",
+  "platform_split": {"title":"Qué pone ENDRIAN y qué pone la plataforma","endrian":"ENDRIAN prepara la especialización del agente: instrucciones, criterios, fuentes cuando correspondan, configuración, pruebas y guía.","platform":"La plataforma aporta el modelo de IA, la interfaz, la disponibilidad y sus funciones nativas."},
+  "categories": [
+    {"id":"primary","label":"Ofertas principales","agents":["avanzado","profesional"]},
+    {"id":"review","label":"Revisión y cotización","agents":["integral","premium"]}
+  ],
+  "agents": {
+    "avanzado": {
+      "name":"Agente Avanzado","category":"OFERTA PRINCIPAL · UNA TAREA CONCRETA","identifier":"/static/assets/agents/ENDRIAN_AGENT_ID_AVANZADO.svg",
+      "card_need":"Una tarea concreta y acotada de uso principalmente personal.","card_description":"Un agente especializado: instrucciones, criterios, formato de resultado y pruebas para ese caso.",
+      "intro":"ENDRIAN toma una tarea concreta de uso principalmente personal y configura un agente especializado para ella: define su función, sus instrucciones y criterios, el formato del resultado y las fuentes cuando correspondan. Antes de entregarlo, lo prueba.","price":"Precio pendiente de aprobación · USD · Pago único",
+      "fields":[
+        {"label":"Para qué puedes utilizarlo","type":"list","content":["Ordenar, resumir y estructurar información propia con un formato de salida definido.","Preparar borradores o contenido con criterios y formato acordados.","Apoyar una tarea repetitiva cuando el resultado esperado puede definirse con claridad."]},
+        {"label":"Características de la configuración","type":"list","content":["Función y resultado esperado definidos para un caso concreto.","Instrucciones, criterios de respuesta y formato de salida preparados para esa necesidad.","Fuentes organizadas cuando formen parte del alcance."]},
+        {"label":"Beneficios de la entrega","type":"list","content":["Ahorras el trabajo inicial de traducir tu necesidad a instrucciones, criterios y formato.","Recibes una configuración ya preparada, en lugar de partir de una conversación genérica cada vez.","Empiezas con un comportamiento probado y una guía breve de uso."]},
+        {"label":"Qué recibes","type":"list","content":["El agente configurado y probado para el caso definido.","Una guía breve de uso y límites.","El detalle de las fuentes, cuentas o servicios necesarios para usarlo."]}
+      ]
+    },
+    "integral": {
+      "name":"Agente Integral","category":"REVISIÓN Y COTIZACIÓN · TAREAS RELACIONADAS Y TRABAJO RECURRENTE","identifier":"/static/assets/agents/ENDRIAN_AGENT_ID_INTEGRAL.svg",
+      "card_need":"Trabajo principalmente personal y recurrente entre tareas relacionadas.","card_description":"Reglas, contexto y fuentes organizados para trabajar con consistencia en el entorno acordado.",
+      "intro":"ENDRIAN configura un agente para tareas relacionadas de uso principalmente personal: organiza las reglas, el contexto y las fuentes que comparten dentro del entorno acordado, y lo prueba para que esos criterios se apliquen de forma consistente entre tareas.","price":"Revisión y cotización",
+      "fields":[
+        {"label":"Para qué puedes utilizarlo","type":"list","content":["Trabajar con varias fuentes y con el contexto organizado para tareas relacionadas.","Preparar análisis, documentos o acciones personales definidas dentro del alcance, bajo reglas comunes."]},
+        {"label":"Características de la configuración","type":"list","content":["Reglas comunes para un conjunto de tareas relacionadas.","Contexto y fuentes organizados para el trabajo acordado.","Pruebas para detectar contradicciones y comprobar que reglas, fuentes y criterios se apliquen de forma consistente entre tareas relacionadas.","Una herramienta definida, solo si el alcance y el entorno lo permiten."]},
+        {"label":"Beneficios de la entrega","type":"list","content":["Ahorras volver a preparar las mismas reglas y fuentes para cada tarea relacionada.","Tienes una base probada y consistente para un uso recurrente en el entorno acordado."]},
+        {"label":"Qué recibes","type":"list","content":["El agente preparado para el conjunto de tareas acordado.","Las reglas, el contexto y las fuentes organizadas dentro del alcance.","Una guía breve y evidencia de las pruebas."]}
+      ]
+    },
+    "profesional": {
+      "name":"Agente Profesional","category":"OFERTA PRINCIPAL · UN PROCESO DE TRABAJO DEFINIDO","identifier":"/static/assets/agents/ENDRIAN_AGENT_ID_PROFESIONAL.svg",
+      "card_need":"Un proceso de trabajo definido.","card_description":"Un agente preparado para clasificar, priorizar y organizar el seguimiento, con criterios acordados.",
+      "intro":"ENDRIAN configura un agente para un proceso de trabajo concreto: define su papel, las reglas con que clasifica y prioriza, cómo se organiza el seguimiento y los momentos en que una persona revisa. Antes de entregarlo, lo prueba.","price":"Precio pendiente de aprobación · USD · Pago único","callout":"Preparar una respuesta no es enviarla: cualquier acción externa pasa por los puntos de revisión acordados.",
+      "fields":[
+        {"label":"Para qué puedes utilizarlo","type":"list","content":["Clasificar y derivar solicitudes según reglas acordadas.","Priorizar mensajes y pendientes con criterios acordados.","Organizar el seguimiento de los casos según los estados definidos para el proceso, también para un equipo definido.","Preparar información o borradores de respuesta para revisión.","Sumar una etapa automatizada o una herramienta definida, solo si el alcance y el entorno lo permiten."]},
+        {"label":"Características de la configuración","type":"list","content":["Papel del agente y reglas de clasificación, prioridad y seguimiento definidos para el proceso.","Puntos de revisión y permisos configurados cuando correspondan.","Fuentes y conexiones incluidas, documentadas.","Pruebas con casos típicos y con los principales errores."]},
+        {"label":"Beneficios de la entrega","type":"list","content":["Ahorras el trabajo de convertir tu proceso en reglas y criterios que el agente pueda seguir.","El equipo trabaja con el mismo criterio dentro del proceso acordado."]},
+        {"label":"Qué recibes","type":"list","content":["El agente preparado y probado para el proceso acordado.","Documentación de roles, fuentes y conexiones incluidas.","Evidencia de pruebas y guía de uso para quien responde por el proceso."]}
+      ]
+    },
+    "premium": {
+      "name":"Agente Premium","category":"REVISIÓN Y COTIZACIÓN · PROCESO RECURRENTE DE MAYOR ALCANCE","identifier":"/static/assets/agents/ENDRIAN_AGENT_ID_PREMIUM.svg",
+      "card_need":"Un proceso recurrente de mayor alcance.","card_description":"Coordinación de etapas, fuentes o equipos y, si el alcance lo incluye, de herramientas definidas.",
+      "intro":"ENDRIAN diseña cómo se coordinan las etapas de un proceso recurrente de mayor alcance y configura el agente para seguirlas. Cuando el caso lo requiere, prepara también las conexiones con herramientas definidas, quién puede hacer qué, qué necesita aprobación y qué reglas se siguen ante errores. Después prueba los recorridos más importantes.","price":"Revisión y cotización",
+      "fields":[
+        {"label":"Para qué puedes utilizarlo","type":"list","content":["Coordinar varias etapas, fuentes o equipos de un proceso recurrente, con más control entre etapas.","Actualizar herramientas definidas para el caso, bajo reglas acordadas."]},
+        {"label":"Características de la configuración","type":"list","content":["Coordinación de las etapas incluidas.","Reglas, permisos y aprobaciones definidos para el alcance, junto con las reglas de actuación ante errores.","Conexión con herramientas del caso, solo cuando corresponde y tras una validación específica."]},
+        {"label":"Beneficios de la entrega","type":"list","content":["Ahorras definir por separado cómo se coordinan las partes del proceso.","Tienes reglas, conexiones y puntos de control documentados, y sabes qué requiere aprobación antes de avanzar."]},
+        {"label":"Qué recibes","type":"list","content":["Un agente integrado y probado en los procesos acordados.","Documentación de controles, permisos, conexiones, accesos y componentes incluidos.","Una guía para operarlo y evidencia de pruebas."]}
+      ]
+    }
+  },
+  "price_panel": {
+    "intro":"ENDRIAN define contigo lo que necesitas, confirma el agente y el alcance, y te presenta las condiciones antes del pago. ENDRIAN comienza a configurar el agente después del pago confirmado.",
+    "delivery_steps":["Definimos contigo la necesidad y el resultado esperado.","Confirmamos el agente, el alcance, el entorno de uso y las condiciones.","Te presentamos el precio o la cotización, y tú decides si avanzar.","Tras el pago confirmado, ENDRIAN configura y prueba el agente.","Recibes el agente en el entorno acordado, con la guía y la documentación que correspondan a su nivel."],
+    "delivery":"Una configuración especializada: función, instrucciones, criterios, fuentes cuando correspondan, formato de resultado, pruebas y guía. ENDRIAN no vende el modelo de IA ni una plataforma propia.",
+    "conditions":"Antes del pago te informamos los servicios externos, el consumo de plataforma, las integraciones, la forma de entrega y cualquier otra condición material del caso. El acompañamiento posterior es opcional y se evalúa por separado."
+  }
+}

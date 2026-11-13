@@ -1,0 +1,14 @@
+ENDRIAN LABORATORIO QA v0.5.13 — PAQUETE DE DESCARGA
+
+Este ZIP contiene íntegramente la aplicación candidata v0.5.13, sus pruebas, documentación y evidencias vigentes.
+
+La carpeta histórica `rollback/` no está incrustada porque contenía cinco ZIP anteriores y añadía aproximadamente 224 MB sin ser necesaria para ejecutar ni comprobar esta candidata.
+
+Rollback externo preservado:
+
+- ENDRIAN_LAB_FULL_FLOW_QA_v0.5.12.zip
+- Tamaño: 244.509.772 bytes
+- SHA-256: 540b1289826d40bb766826c712ad1ffe4c5c1aca4a2d537b5ca10fa215971a9e
+
+No se modificó código ni alcance funcional durante este reempaquetado.
+

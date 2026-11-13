@@ -1,0 +1,22 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.2",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "tests": {"passed": 139, "failed": 0, "warning": 1},
+  "checks": {
+    "baseline_sha256_match": "PASS",
+    "email_sent_false": "PASS",
+    "single_pdf_attachment": "PASS",
+    "same_order_snapshot_source": "PASS",
+    "existing_snapshot_unchanged": "PASS",
+    "no_transcript": "PASS",
+    "qa_terms_reference_only": "PASS",
+    "pending_legal_notice": "PASS",
+    "particular_conditions_omitted_when_absent": "PASS",
+    "private_local_access": "PASS",
+    "public_payment_card_has_no_email_preview": "PASS",
+    "pdf_a4_two_pages_no_cuts_visual_review": "PASS",
+    "email_browser_desktop_mobile": "PENDING_MANUAL_REVIEW"
+  },
+  "real_email_sent": false,
+  "external_provider_connected": false
+}

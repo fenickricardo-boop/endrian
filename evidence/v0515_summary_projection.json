@@ -1,0 +1,165 @@
+{
+  "state": "S5",
+  "client_output": {
+    "request_title": "Solución para gestión de atención por correo",
+    "request_description": "Configuración especializada para organizar la atención por correo con criterios definidos y control del equipo.",
+    "need_confirmed": "Organizar y dar seguimiento a las consultas de clientes recibidas por correo para que un equipo de cuatro personas pueda priorizar pendientes y mantener continuidad en la atención.",
+    "objective": "Reducir pérdidas y demoras en la gestión de solicitudes manteniendo el control del equipo.",
+    "service": "ENDRIAN Especializado",
+    "why_fit": "Corresponde a una función concreta y acotada: organizar la atención por correo con criterios definidos y revisión del equipo.",
+    "scope": "ENDRIAN preparará una configuración especializada para clasificar, priorizar y organizar el seguimiento de consultas, reclamos y solicitudes. La solución preparará borradores, pero no enviará respuestas ni se conectará a cuentas reales en esta prueba.",
+    "deliverables": [
+      "Configuración especializada con instrucciones y criterios acordados.",
+      "Estructura para clasificar, priorizar y registrar el seguimiento.",
+      "Pruebas con ejemplos ficticios antes de la entrega.",
+      "Guía breve para comenzar a utilizar la configuración."
+    ],
+    "information_input": "Tu equipo incorporará los datos de cada caso en el entorno acordado. Esta prueba no conecta ni lee cuentas de correo reales.",
+    "materials_needed": [
+      "Criterios de prioridad.",
+      "Ejemplos ficticios de consultas, reclamos y solicitudes.",
+      "Criterios de revisión de los borradores."
+    ],
+    "agent": "ENDRIAN Especializado",
+    "commitments": [
+      "Clasificar consultas, reclamos y solicitudes.",
+      "Priorizar mensajes y pendientes según los criterios definidos.",
+      "Mantener seguimiento del estado de los casos.",
+      "Preparar borradores de respuesta para que el equipo los revise antes del envío.",
+      "Organizar el trabajo compartido del equipo de cuatro personas para mantener continuidad."
+    ],
+    "context": "Atención por correo de un equipo de cuatro personas",
+    "environment_label": "Entorno simulado de ENDRIAN",
+    "environment_notice": "Dato ficticio de plataforma para QA; pendiente de definición comercial.",
+    "delivery_label": "Configuración preparada para el entorno acordado",
+    "delivery_notice": "Dato ficticio de plazo para QA; pendiente de aprobación operativa y comercial.",
+    "dependencies": [
+      "Datos de casos incorporados manualmente en QA",
+      "Criterios de prioridad definidos",
+      "Ejemplos ficticios para pruebas",
+      "El equipo revisa los borradores antes de enviarlos."
+    ],
+    "limits": [
+      "Sin envío autónomo de respuestas.",
+      "Sin conexión a cuentas de correo o sistemas externos.",
+      "Sin SLA, operación 24/7 ni acciones externas autónomas."
+    ],
+    "conditions": [
+      "Pago simulado.",
+      "2 a 5 días hábiles desde la confirmación del pago.",
+      "El precio no incluye suscripciones, licencias ni consumo de servicios externos. Si tu agente los necesita, te indicaremos cuáles y sus costos antes del pago.",
+      "Las nuevas funciones y el acompañamiento posterior se gestionan por separado."
+    ],
+    "price": 89,
+    "amount_label": "USD 89",
+    "currency": "USD",
+    "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+    "quotation_ref": "END-QA-COT-0001/v1",
+    "quotation_valid_until": "2026-11-04T12:08:40+00:00"
+  },
+  "quotation": {
+    "quotation_id": "END-QA-COT-0001",
+    "quotation_version": 1,
+    "quotation_ref": "END-QA-COT-0001/v1",
+    "scope_version_id": "SCOPE-QA-0001",
+    "solution_request_version_id": "SOLREQ-QA-0001",
+    "matrix_version": "0.2.1",
+    "matrix_item_ids": [
+      "PRO-CAP-001",
+      "PRO-CAP-004",
+      "PRO-CAP-005",
+      "PRO-CAP-002",
+      "PRO-CAP-006",
+      "PRO-CTL-001"
+    ],
+    "commercial_rules_version": "QA-COMMERCIAL-0.5",
+    "conditions_version": "QA-CONDITIONS-0.2",
+    "status": "ISSUED",
+    "microstate": "S5.Q-ISSUED",
+    "amount": 89,
+    "amount_label": "USD 89",
+    "currency": "USD",
+    "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+    "delivery_window_accepted": false,
+    "conditions": [
+      "Pago simulado.",
+      "2 a 5 días hábiles desde la confirmación del pago.",
+      "El precio no incluye suscripciones, licencias ni consumo de servicios externos. Si tu agente los necesita, te indicaremos cuáles y sus costos antes del pago.",
+      "Las nuevas funciones y el acompañamiento posterior se gestionan por separado."
+    ],
+    "expires_at": "2026-11-04T12:08:40+00:00",
+    "valid_until": "2026-11-04T12:08:40+00:00",
+    "created_at": "2026-10-28T12:08:40+00:00",
+    "reviewed": false,
+    "review_actor": null,
+    "simulation": true,
+    "email_preview": {
+      "label": "Vista previa del correo · No enviado",
+      "to": "",
+      "subject": "Tu solicitud ENDRIAN · END-QA-COT-0001",
+      "content": {
+        "request_title": "Solución para gestión de atención por correo",
+        "request_description": "Configuración especializada para organizar la atención por correo con criterios definidos y control del equipo.",
+        "need_confirmed": "Organizar y dar seguimiento a las consultas de clientes recibidas por correo para que un equipo de cuatro personas pueda priorizar pendientes y mantener continuidad en la atención.",
+        "objective": "Reducir pérdidas y demoras en la gestión de solicitudes manteniendo el control del equipo.",
+        "service": "ENDRIAN Especializado",
+        "why_fit": "Corresponde a una función concreta y acotada: organizar la atención por correo con criterios definidos y revisión del equipo.",
+        "scope": "ENDRIAN preparará una configuración especializada para clasificar, priorizar y organizar el seguimiento de consultas, reclamos y solicitudes. La solución preparará borradores, pero no enviará respuestas ni se conectará a cuentas reales en esta prueba.",
+        "deliverables": [
+          "Configuración especializada con instrucciones y criterios acordados.",
+          "Estructura para clasificar, priorizar y registrar el seguimiento.",
+          "Pruebas con ejemplos ficticios antes de la entrega.",
+          "Guía breve para comenzar a utilizar la configuración."
+        ],
+        "information_input": "Tu equipo incorporará los datos de cada caso en el entorno acordado. Esta prueba no conecta ni lee cuentas de correo reales.",
+        "materials_needed": [
+          "Criterios de prioridad.",
+          "Ejemplos ficticios de consultas, reclamos y solicitudes.",
+          "Criterios de revisión de los borradores."
+        ],
+        "agent": "ENDRIAN Especializado",
+        "commitments": [
+          "Clasificar consultas, reclamos y solicitudes.",
+          "Priorizar mensajes y pendientes según los criterios definidos.",
+          "Mantener seguimiento del estado de los casos.",
+          "Preparar borradores de respuesta para que el equipo los revise antes del envío.",
+          "Organizar el trabajo compartido del equipo de cuatro personas para mantener continuidad."
+        ],
+        "context": "Atención por correo de un equipo de cuatro personas",
+        "environment_label": "Entorno simulado de ENDRIAN",
+        "environment_notice": "Dato ficticio de plataforma para QA; pendiente de definición comercial.",
+        "delivery_label": "Configuración preparada para el entorno acordado",
+        "delivery_notice": "Dato ficticio de plazo para QA; pendiente de aprobación operativa y comercial.",
+        "dependencies": [
+          "Datos de casos incorporados manualmente en QA",
+          "Criterios de prioridad definidos",
+          "Ejemplos ficticios para pruebas",
+          "El equipo revisa los borradores antes de enviarlos."
+        ],
+        "limits": [
+          "Sin envío autónomo de respuestas.",
+          "Sin conexión a cuentas de correo o sistemas externos.",
+          "Sin SLA, operación 24/7 ni acciones externas autónomas."
+        ],
+        "conditions": [
+          "Pago simulado.",
+          "2 a 5 días hábiles desde la confirmación del pago.",
+          "El precio no incluye suscripciones, licencias ni consumo de servicios externos. Si tu agente los necesita, te indicaremos cuáles y sus costos antes del pago.",
+          "Las nuevas funciones y el acompañamiento posterior se gestionan por separado."
+        ],
+        "price": 89,
+        "amount_label": "USD 89",
+        "currency": "USD",
+        "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+        "quotation_ref": "END-QA-COT-0001/v1",
+        "quotation_valid_until": "2026-11-04T12:08:40+00:00"
+      },
+      "body": "Resumen de tu solicitud · END-QA-COT-0001/v1\n\nSolución para gestión de atención por correo\nConfiguración especializada para organizar la atención por correo con criterios definidos y control del equipo.\n\nLo que prepararemos\n• Clasificar consultas, reclamos y solicitudes.\n• Priorizar mensajes y pendientes según los criterios definidos.\n• Mantener seguimiento del estado de los casos.\n• Preparar borradores de respuesta para que el equipo los revise antes del envío.\n• Organizar el trabajo compartido del equipo de cuatro personas para mantener continuidad.\n\nValor\nUSD 89\n\nPlazo estimado\n2 a 5 días hábiles desde la confirmación del pago\n\nCondiciones\nPago simulado.\n2 a 5 días hábiles desde la confirmación del pago.\nEl precio no incluye suscripciones, licencias ni consumo de servicios externos. Si tu agente los necesita, te indicaremos cuáles y sus costos antes del pago.\nLas nuevas funciones y el acompañamiento posterior se gestionan por separado.",
+      "cta_label": "Continuar con mi solicitud",
+      "sent": false,
+      "provider": null,
+      "external_service": false,
+      "simulation": true
+    }
+  }
+}

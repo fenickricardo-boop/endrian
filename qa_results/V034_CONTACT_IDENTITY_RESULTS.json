@@ -1,0 +1,26 @@
+{
+  "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.4",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "source": {
+    "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.3.zip",
+    "sha256": "eec7ec823500a8bb9a4171eadb083d7467e7b7a46b6cd323ed12171f137fd797"
+  },
+  "canonical_identity": {
+    "name": "Juan Pérez",
+    "email": "juan.perez@example.com",
+    "real_pii_required": false
+  },
+  "checks": {
+    "invalid_name_message": "PASS",
+    "invalid_email_message": "PASS",
+    "valid_identity_missing_consent_message": "PASS",
+    "valid_identity_with_consent_reaches_proposal": "PASS",
+    "single_visible_consent": "PASS",
+    "backend_single_source_of_truth": "PASS",
+    "focused_tests": {"passed": 3, "failed": 0},
+    "full_regression": {"passed": 81, "failed": 0},
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS"
+  },
+  "proposed_status": "READY_FOR_EDUARDO_LIA_CONTINUED_TEST"
+}

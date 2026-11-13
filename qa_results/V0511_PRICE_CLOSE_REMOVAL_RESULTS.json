@@ -1,0 +1,23 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.11",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "baseline": {
+    "name": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.10.zip",
+    "size_bytes": 243459429,
+    "sha256": "5e1839a661786adb60023176c690bbfa5894a013ef0323826009a3073ad825ce",
+    "integrity": "PASS"
+  },
+  "scope": "Retiro exclusivo del botón inferior Cerrar en Precios",
+  "expected_public_close_control": "closePrices / X circular superior",
+  "checks": {
+    "pytest": {"passed": 170, "failed": 0},
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS",
+    "http_root": 200,
+    "http_health": 200,
+    "prices_return_control_absent": "PASS",
+    "top_close_control_preserved": "PASS",
+    "focus_restoration_logic_preserved": "PASS"
+  },
+  "production": false
+}

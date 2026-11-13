@@ -1,0 +1,23 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.7",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "result": "PASS",
+  "pytest": {"passed": 98, "failed": 0},
+  "case": {
+    "id": "V037-EMAIL-SUMMARY-NO-LOOP",
+    "generation": "PASS",
+    "transition": "S1 -> S3 -> S4 -> S5",
+    "render_target": "request_summary",
+    "scope_versions": 1,
+    "solution_request_versions": 1,
+    "quotations": 1,
+    "loop_prevented": true,
+    "duplicate_versions_prevented": true
+  },
+  "boundaries": {
+    "real_ai": false,
+    "real_email": false,
+    "real_payment": false,
+    "production": false
+  }
+}

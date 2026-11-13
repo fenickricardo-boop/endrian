@@ -1,0 +1,133 @@
+{
+  "states": {
+    "S2_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "S2_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    },
+    "S4_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "S4_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    },
+    "S5_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "S5_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    },
+    "S6_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "S6_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    },
+    "S7_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "S7_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    },
+    "S8_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "S8_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    },
+    "SH_mobile": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": false,
+      "bad": []
+    },
+    "SH_desktop": {
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": false,
+      "bad": []
+    }
+  },
+  "selector_mobile": {
+    "overflow": false,
+    "cards": [
+      {
+        "right": 367,
+        "bottom": 488.484375,
+        "smallBottom": 476.484375,
+        "clipped": false
+      },
+      {
+        "right": 367,
+        "bottom": 588.65625,
+        "smallBottom": 576.65625,
+        "clipped": false
+      },
+      {
+        "right": 367,
+        "bottom": 716.828125,
+        "smallBottom": 704.828125,
+        "clipped": false
+      },
+      {
+        "right": 367,
+        "bottom": 817,
+        "smallBottom": 805,
+        "clipped": false
+      }
+    ],
+    "width": 390,
+    "initial_focus": "closeAgentExplorer",
+    "tab_inside": true,
+    "escape_closed": true
+  },
+  "keyboard": {
+    "focus_on_open": "closeAgentExplorer",
+    "tab_inside": true,
+    "escape_closed": true
+  },
+  "reduced_motion": {
+    "animation_name": "none",
+    "pass": true
+  },
+  "global_result": "PASS",
+  "checks": 18,
+  "passed": 18
+}

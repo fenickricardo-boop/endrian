@@ -1,0 +1,2 @@
+PASS
+hashes antes == hashes después para todos los archivos de agent_guide/ (excluyendo __pycache__).

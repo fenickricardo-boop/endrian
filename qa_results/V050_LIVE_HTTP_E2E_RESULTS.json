@@ -1,0 +1,32 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.0",
+  "pending": {
+    "state": "S6",
+    "order": null,
+    "reference": "PAY-QA-E9FE9B6838"
+  },
+  "confirmed": {
+    "state": "S7",
+    "order_id": "END-20261012-0001",
+    "status": "RECIBIDA"
+  },
+  "repeated_confirmation": {
+    "http_status": 409,
+    "same_order": true
+  },
+  "finalization": {
+    "event": "CONVERSATION_FINALIZED",
+    "new_session_id": "QA-cd5d5236e1a448929f1516044911c9da",
+    "clean_state": "S0",
+    "history_count": 0,
+    "contact_present": false,
+    "order_visible_in_new_session": false
+  },
+  "archive": {
+    "consultable": true,
+    "snapshot_identical": true,
+    "transcript_found": false,
+    "email_preview_sent": false,
+    "snapshot_sha256": "f6d153c8bb421a3539666523b532fff7642f11217391f6753bdbeccfc4398904"
+  }
+}

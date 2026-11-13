@@ -1,0 +1,14 @@
+{
+  "global_result": "PASS",
+  "results": {
+    "R01": "PASS — necesidad abierta/ambigua, aclaración, síntesis y confirmación preliminar.",
+    "R02": "PASS — catálogo→ficha→Hablar con ENDRIAN→mismo chat, selección conservada.",
+    "R03": "PASS — registro QA sintético con qa_identity_ref y consentimientos separados.",
+    "R04": "PASS — orientación confirmada→propuesta→aceptación explícita de alcance/monto/plazo QA.",
+    "R05": "PASS — riesgo/incertidumbre→SH, pago bloqueado, retorno seguro S3/S4.",
+    "R06": "PASS — PaymentGate=true→PENDIENTE→CONFIRMADO→orden QA idempotente.",
+    "R07": "PASS — pendiente/rechazado/cancelado/expirado con retornos sin orden; expirado exige revalidación.",
+    "R08": "PASS — recuperación por qa_identity_ref restaura último snapshot y cookie de sesión original.",
+    "R09": "PASS — orden→email_preview→seguimiento; sin envío real."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.9",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "regression": {"passed": 102, "failed": 0},
+  "standard_route": {
+    "result": "PASS",
+    "price": 20,
+    "currency": "USD",
+    "delivery_window": "2 a 5 días hábiles",
+    "expires_at_visible_as_concrete_date": true,
+    "terminal_state": "S7",
+    "unique_order": true
+  },
+  "special_route": {
+    "result": "PASS",
+    "quotation_count": 0,
+    "payment_enabled": false,
+    "terminal_state": "SH"
+  },
+  "browser_visual_evidence": {
+    "result": "BLOCKED",
+    "reason": "Chromium executable unavailable in the build environment",
+    "desktop": "NOT_EXECUTED",
+    "mobile": "NOT_EXECUTED"
+  },
+  "final_status": "FUNCTIONAL_PASS_VISUAL_REVIEW_REQUIRED"
+}

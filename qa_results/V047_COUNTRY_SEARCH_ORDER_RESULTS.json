@@ -1,0 +1,38 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.7",
+  "base": {
+    "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.6",
+    "size_bytes": 243423136,
+    "sha256": "4f1e0659d617831c6102c42cf9309605757071ef231919b4087e07f3722bd1c9"
+  },
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "automated_regression": {
+    "result": "PASS",
+    "tests_passed": 128,
+    "tests_failed": 0,
+    "warnings": 1
+  },
+  "checks": {
+    "country_search_case_insensitive": "PASS",
+    "country_search_diacritic_insensitive": "PASS",
+    "country_confirmation_click_or_keyboard": "PASS",
+    "no_silent_selection_on_typing": "PASS",
+    "pending_without_order": "PASS",
+    "backend_confirmation_creates_order": "PASS",
+    "repeated_confirmation_no_duplicate": "PASS",
+    "order_persists_on_reload": "PASS",
+    "snapshot_immutable": "PASS",
+    "snapshot_without_transcript": "PASS",
+    "email_preview_unsent": "PASS"
+  },
+  "external_operations": {
+    "payment_charged": false,
+    "email_sent": false,
+    "sms_sent": false,
+    "construction_started": false
+  },
+  "browser_visual_evidence": {
+    "status": "PENDING_MANUAL_REVIEW",
+    "reason": "No browser executable is available in the execution environment; automated screenshots were not fabricated."
+  }
+}

@@ -1,0 +1,7 @@
+........................................................................ [ 64%]
+........................................                                 [100%]
+
+112 passed, 1 deprecation warning in 1.91s
+
+Python compileall: PASS
+JavaScript syntax check: PASS

@@ -1,0 +1,10 @@
+{
+  "suite": "BLACK_BOX_HANDLE_MESSAGE_ONLY",
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "global_result": "PASS",
+  "real_model_execution": "NOT EXECUTED — provider/model selection and integration remain a later Valeria dependency",
+  "claim_boundary": "PASS applies to the deterministic conversational integration layer exercised only through handle_message; it is not evidence of behavior of a future external AI model.",
+  "output_dir": "/tmp/tmp.WNCndpckXo"
+}

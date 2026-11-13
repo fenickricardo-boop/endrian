@@ -1,0 +1,17 @@
+{
+  "candidate": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.0",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "fixture": "QA-PROFESIONAL-01",
+  "automated_suite": {"result": "PASS", "passed": 60, "failed": 0},
+  "syntax": {"python_compile": "PASS", "node_check": "PASS"},
+  "local_health": {"result": "PASS", "http_status": 200},
+  "functional": {"ids": "F01-F32", "result": "PASS", "derived_from": "pytest"},
+  "traceability": {"ids": "T01-T20", "result": "PASS", "derived_from": "pytest and manifest"},
+  "negative": {"ids": "N01-N16", "result": "PASS", "derived_from": "pytest"},
+  "non_transmission": {"ids": "NTL01-NTL12", "result": "PASS", "derived_from": "pytest, CSP and socket-denial test"},
+  "manual_visual": {"result": "PENDING_EDUARDO_LIA", "reason": "Remote browser cannot access loopback; no visual PASS fabricated."},
+  "external_calls": 0,
+  "real_pii": 0,
+  "production_changes": 0,
+  "overall": "APTO_PARA_REVISION_MANUAL"
+}

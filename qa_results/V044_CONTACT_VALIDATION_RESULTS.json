@@ -1,0 +1,27 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.4",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "base": {
+    "package": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.3.zip",
+    "sha256": "49be807f6b0617064e90cae7d09a377cd9a526a5b85c7fb87c88b5e1c5fe7283"
+  },
+  "automated_regression": {
+    "result": "PASS",
+    "tests": 120,
+    "node_syntax": "PASS",
+    "python_compile": "PASS"
+  },
+  "covered": [
+    "contactos diferentes sin identidad canónica obligatoria",
+    "correo válido fuera de example.com/example.net/example.org",
+    "teléfono vacío",
+    "teléfonos estructuralmente válidos con CL, AR y US",
+    "teléfono parcial seguido de eliminación y avance",
+    "422 estructurado seguido de corrección en la misma sesión",
+    "persistencia de identidad y teléfono",
+    "contrato frontend sin [object Object]",
+    "selector compacto con etiqueta accesible"
+  ],
+  "external_operations": "NONE",
+  "visual_browser_evidence": "PENDING_MANUAL_BROWSER_REVIEW"
+}

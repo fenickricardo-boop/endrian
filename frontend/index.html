@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENDRIAN Laboratorio — Agente Guía QA</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="page-shell">
+    <header class="lab-header">
+      <a class="brand" href="#" id="homeLink" aria-label="ENDRIAN Laboratorio">
+        <img src="/static/assets/identity/ENDRIAN_LOCKUP_HORIZONTAL_DARK.svg" alt="ENDRIAN">
+        <span>LABORATORIO</span>
+      </a>
+      <nav class="header-nav" aria-label="Navegación del Laboratorio">
+        <button class="nav-button" id="returnEndrian">Volver a ENDRIAN</button>
+        <button class="nav-button" id="servicesButton">Servicios</button>
+        <button class="nav-button" id="priceButton">Precios</button>
+        <button class="nav-button" id="contactButton">Contacto</button>
+        <button class="nav-button new-conversation-nav" id="newConversation">Nueva conversación</button>
+      </nav>
+      <button class="mobile-menu" id="mobileMenu" aria-expanded="false" aria-controls="mobileNav">☰</button>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <button data-mobile-action="home">Volver a ENDRIAN</button>
+      <button data-mobile-action="services">Servicios</button>
+      <button data-mobile-action="prices">Precios</button>
+      <button data-mobile-action="contact">Contacto</button>
+      <button class="mobile-new-conversation" data-mobile-action="new">Nueva conversación</button>
+    </div>
+
+    <div class="qa-warning" id="qaWarning">Entorno de prueba · Sin operaciones reales</div>
+
+    <main class="workspace">
+      <section class="conversation-panel" aria-label="Conversación con el Agente Guía">
+        <div class="mobile-summary-toggle">
+          <button id="summaryToggle" aria-expanded="false">Resumen de tu solicitud <span>⌄</span></button>
+          <div id="mobileSummary" hidden></div>
+        </div>
+
+        <div class="conversation-scroll" id="conversationScroll">
+          <div class="message assistant intro-message">
+            <div class="agent-mark" aria-hidden="true">✦</div>
+            <div class="bubble"><p id="greeting">Hola, soy el Agente Guía de ENDRIAN.<br>Cuéntame qué quieres conseguir, mejorar o resolver y te ayudaré a aclarar qué necesitas.</p></div>
+          </div>
+          <div id="history" class="history" aria-live="polite"></div>
+          <div id="agentSelectionStatus" class="agent-selection-status" hidden aria-live="polite"></div>
+          <div id="specialPanel"></div>
+        </div>
+
+        <div class="composer-zone" id="composerZone">
+          <label class="sr-only" for="messageInput">Mensaje</label>
+          <textarea id="messageInput" rows="3" maxlength="2400" placeholder="Escribe aquí qué quieres resolver..."></textarea>
+          <div class="composer-help" id="composerHelp">Puedes contarme un problema, una idea o un objetivo con tus propias palabras. No necesitas saber qué servicio o solución pedir.</div>
+          <div class="composer-actions">
+            <div class="disabled-tools" aria-label="Adjuntos no disponibles">
+              <button type="button" disabled title="Adjuntos no disponibles">⌕</button>
+              <button type="button" disabled title="Adjuntos no disponibles">▧</button>
+              <span>Adjuntos no disponibles</span>
+            </div>
+            <button id="sendButton" class="send-button" aria-label="Enviar mensaje"><svg class="control-icon control-icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+      </section>
+
+      <aside class="summary-panel" id="desktopSummary" aria-label="Resumen de tu solicitud"></aside>
+    </main>
+  </div>
+
+  <footer class="lab-footer" aria-label="Enlaces secundarios del Laboratorio">
+    <button class="footer-link" id="privacyFooter" type="button">Política de Privacidad</button>
+    <button class="footer-link" id="recoverSession" type="button">Recuperar solicitud</button>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="price-drawer services-drawer" id="servicesDrawer" role="dialog" aria-modal="true" aria-labelledby="servicesTitle" aria-hidden="true">
+    <div class="drawer-handle" aria-hidden="true"></div>
+    <div class="drawer-head services-drawer-head">
+      <div><span class="eyebrow">SERVICIOS</span><h2 id="servicesTitle">Servicios ENDRIAN</h2></div>
+      <button id="closeServices" class="close-button" type="button" aria-label="Cerrar panel de Servicios"><svg class="control-icon control-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+
+    <div class="services-panel-view services-list-view" id="servicesListView">
+      <p class="drawer-intro">Tres niveles de alcance para necesidades distintas. No necesitas elegir uno antes de conversar: el Agente Guía te orientará según tu caso.</p>
+      <div class="service-summary-cards" id="serviceSummaryCards">
+      <article class="service-summary-card" data-service-card="esencial">
+        <div class="service-summary-copy">
+          <p class="service-number">01</p>
+          <h3>ENDRIAN Esencial</h3>
+          <p class="service-lead">Mejoramos algo concreto de lo que ya utilizas.</p>
+        </div>
+        <button class="service-open-detail" type="button" data-service-detail-open="esencial" aria-label="Ver ficha de ENDRIAN Esencial">Ver ficha <span aria-hidden="true">→</span></button>
+      </article>
+      <article class="service-summary-card" data-service-card="especializado">
+        <div class="service-summary-copy">
+          <p class="service-number">02</p>
+          <h3>ENDRIAN Especializado</h3>
+          <p class="service-lead">Creamos agentes especializados y soluciones preparadas para una función concreta.</p>
+        </div>
+        <button class="service-open-detail" type="button" data-service-detail-open="especializado" aria-label="Ver ficha de ENDRIAN Especializado">Ver ficha <span aria-hidden="true">→</span></button>
+      </article>
+      <article class="service-summary-card" data-service-card="integral">
+        <div class="service-summary-copy">
+          <p class="service-number">03</p>
+          <h3>ENDRIAN Integral</h3>
+          <p class="service-lead">Coordinamos varias funciones relacionadas en una misma solución.</p>
+        </div>
+        <button class="service-open-detail" type="button" data-service-detail-open="integral" aria-label="Ver ficha de ENDRIAN Integral">Ver ficha <span aria-hidden="true">→</span></button>
+      </article>
+      </div>
+      <p class="drawer-note">Consultar estos servicios no inicia una contratación. El Agente Guía te orientará a partir de tu necesidad.</p>
+    </div>
+
+    <div class="services-panel-view service-detail-view" id="serviceDetailView" hidden>
+      <div class="service-detail-backbar">
+        <button class="service-back-button" id="serviceBack" type="button" aria-label="Volver a Servicios"><svg class="service-back-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 5.5 8 12l6.5 6.5M8.5 12H19"/></svg><span>Volver a Servicios</span></button>
+      </div>
+      <div class="service-detail-content" id="serviceDetailContent"></div>
+    </div>
+
+    <template data-service-detail="esencial">
+      <article class="service-detail-sheet" data-service="esencial">
+        <p class="service-number">01</p>
+        <h3>ENDRIAN Esencial</h3>
+        <p class="service-detail-lead">Mejoramos algo concreto de lo que ya utilizas.</p>
+        <section class="service-detail-section"><h4>Necesidad</h4><p>Tu agente o configuración te resulta útil, pero una respuesta o un comportamiento específico no funciona como necesitas.</p></section>
+        <section class="service-detail-section"><h4>Qué hacemos</h4><p>Partimos de lo que ya tienes, revisamos las instrucciones y el contexto relacionados con el problema, corregimos lo necesario y comprobamos que el cambio responda a lo acordado, conservando aquello que ya funciona correctamente.</p></section>
+        <section class="service-detail-section"><h4>Qué recibes</h4><p>La versión ajustada de tu configuración o agente, una explicación breve de qué modificamos y qué comprobamos, y las instrucciones necesarias para aplicar el ajuste y utilizar la versión actualizada en la plataforma acordada.</p></section>
+        <section class="service-detail-section"><h4>Diferencia de alcance</h4><p>Es una intervención localizada sobre algo existente. No rehace toda la solución.</p></section>
+      </article>
+    </template>
+    <template data-service-detail="especializado">
+      <article class="service-detail-sheet" data-service="especializado">
+        <p class="service-number">02</p>
+        <h3>ENDRIAN Especializado</h3>
+        <p class="service-detail-lead">Creamos agentes especializados y soluciones preparadas para una función concreta.</p>
+        <section class="service-detail-section"><h4>Necesidad</h4><p>Quieres utilizar IA para una función definida y necesitas una solución adaptada a lo que quieres hacer.</p></section>
+        <section class="service-detail-section"><h4>Qué hacemos</h4><p>Definimos cómo debe funcionar la solución. Si la mejor forma de resolver tu necesidad es un agente, lo creamos específicamente para ese uso, con propósito, instrucciones, contexto, criterios y forma de responder definidos. Si ya existe una buena base, podemos reorganizarla y adaptarla. Después probamos la solución con situaciones representativas.</p></section>
+        <section class="service-detail-section"><h4>Qué recibes</h4><p>Un agente especializado o una configuración adaptada a tu necesidad, comprobada según el alcance definido, junto con instrucciones de uso y una explicación breve de cómo quedó preparada. Los materiales de referencia se organizan cuando forman parte del trabajo acordado.</p></section>
+        <section class="service-detail-section"><h4>Diferencia de alcance</h4><p>Resuelve una función principal completa. Va más allá de un ajuste puntual, sin coordinar todavía varias funciones relacionadas.</p></section>
+      </article>
+    </template>
+    <template data-service-detail="integral">
+      <article class="service-detail-sheet" data-service="integral">
+        <p class="service-number">03</p>
+        <h3>ENDRIAN Integral</h3>
+        <p class="service-detail-lead">Coordinamos varias funciones relacionadas en una misma solución.</p>
+        <section class="service-detail-section"><h4>Necesidad</h4><p>Tu caso requiere más que una función principal y necesitas que varias funciones trabajen de manera coordinada y coherente.</p></section>
+        <section class="service-detail-section"><h4>Qué hacemos</h4><p>Definimos qué debe hacer cada función, cómo se relacionan entre sí y cómo debe comportarse la solución en conjunto. Organizamos contexto, información, reglas, prioridades y excepciones. Si la solución se prepara como un agente, estructuramos esas funciones dentro de él. Después comprobamos cada función por separado y también su funcionamiento conjunto.</p></section>
+        <section class="service-detail-section"><h4>Qué recibes</h4><p>Una solución integral preparada y comprobada según el alcance acordado, con instrucciones para aplicarla y utilizarla en la plataforma acordada, una explicación de cómo quedaron organizadas sus funciones y, cuando corresponda, los materiales de referencia necesarios.</p></section>
+        <section class="service-detail-section"><h4>Diferencia de alcance</h4><p>Coordina varias funciones relacionadas dentro de una misma finalidad y solución.</p></section>
+      </article>
+    </template>
+  </aside>
+
+  <aside class="price-drawer prices-drawer" id="priceDrawer" role="dialog" aria-modal="true" aria-labelledby="priceTitle" aria-hidden="true">
+    <div class="drawer-handle" aria-hidden="true"></div>
+    <div class="drawer-head">
+      <div><span class="eyebrow">PRECIOS</span><h2 id="priceTitle">Precios</h2></div>
+      <button id="closePrices" class="close-button" type="button" aria-label="Cerrar panel de Precios"><svg class="control-icon control-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <p class="drawer-intro">Precios vigentes de los tres servicios. Consultarlos no te obliga a elegir ni contratar.</p>
+    <div class="pricing-list">
+      <article class="pricing-row"><div><h3>ENDRIAN Esencial</h3><p>Ajuste concreto sobre un agente o configuración existente.</p></div><strong>USD 39</strong></article>
+      <article class="pricing-row"><div><h3>ENDRIAN Especializado</h3><p>Agente especializado o solución completa para una función principal.</p></div><strong>USD 89</strong></article>
+      <article class="pricing-row"><div><h3>ENDRIAN Integral</h3><p>Solución que coordina varias funciones relacionadas.</p></div><strong>USD 149</strong></article>
+    </div>
+    <p class="drawer-note">El Agente Guía te orientará según tu caso. Si tu necesidad requiere un alcance diferente de estos servicios, te lo indicaremos antes de cualquier contratación.</p>
+  </aside>
+
+  <aside class="contact-drawer" id="contactDrawer" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
+    <div class="drawer-handle" aria-hidden="true"></div>
+    <div class="drawer-head">
+      <div><span class="eyebrow">CONTACTO</span><h2 id="contactTitle">Contacto</h2></div>
+      <button id="closeContact" class="close-button" type="button" aria-label="Cerrar panel de contacto"><svg class="control-icon control-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <form id="contactForm" class="contact-form" novalidate>
+      <p class="contact-qa-note">Revisión local: utiliza datos ficticios. Este formulario no envía ni almacena información.</p>
+      <p class="contact-required-note"><span aria-hidden="true">*</span> Campos requeridos.</p>
+      <div class="general-contact-grid">
+        <label><span class="field-label">Nombre <span aria-hidden="true">*</span></span><input id="generalContactName" name="name" autocomplete="off" required><small class="field-error" id="generalContactNameError" role="alert"></small></label>
+        <label><span class="field-label">Apellido</span><input id="generalContactLastName" name="last_name" autocomplete="off"><small class="field-error" id="generalContactLastNameError" role="alert"></small></label>
+        <label><span class="field-label">Correo <span aria-hidden="true">*</span></span><input id="generalContactEmail" name="email" type="email" autocomplete="off" required><small class="field-error" id="generalContactEmailError" role="alert"></small></label>
+        <div id="generalContactCountrySlot"></div>
+        <div id="generalContactPhoneSlot" class="general-contact-wide general-contact-phone-row"></div>
+        <label class="general-contact-wide"><span class="field-label">Asunto <span aria-hidden="true">*</span></span><input id="generalContactSubject" name="subject" autocomplete="off" required><small class="field-error" id="generalContactSubjectError" role="alert"></small></label>
+        <label class="general-contact-wide"><span class="field-label">Mensaje <span aria-hidden="true">*</span></span><textarea id="generalContactMessage" name="message" rows="6" required></textarea><small class="field-error" id="generalContactMessageError" role="alert"></small></label>
+      </div>
+      <button class="primary-cta contact-submit" type="submit">Enviar mensaje <span aria-hidden="true">→</span></button>
+      <div id="contactStatus" class="contact-status" role="status" aria-live="polite"></div>
+      <button class="footer-link contact-privacy-link" id="contactPrivacyLink" type="button">Política de Privacidad</button>
+    </form>
+  </aside>
+
+  <dialog id="infoDialog" class="info-dialog">
+    <button class="close-button dialog-close" id="closeDialog" aria-label="Cerrar"><svg class="control-icon control-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="dialogTitle"></h2>
+    <div id="dialogBody"></div>
+  </dialog>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

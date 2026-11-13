@@ -1,0 +1,15 @@
+{
+  "source_zip": "ENDRIAN_LAB_FULL_FLOW_QA_v0.2.1.zip",
+  "source_sha256": "7dbde92e8b8bd691f97c6ce67c1f757f2e3dc3a7878ddf82b033ee42f9d81b93",
+  "source_expected": "7dbde92e8b8bd691f97c6ce67c1f757f2e3dc3a7878ddf82b033ee42f9d81b93",
+  "source_exact": true,
+  "regression_pytest": "68/68 PASS",
+  "legacy_regression": "60/60 PASS dentro de la suite total",
+  "ux_specific": "8/8 PASS",
+  "node_check": "PASS",
+  "external_services_modified": false,
+  "github_modified": false,
+  "railway_modified": false,
+  "production_modified": false,
+  "model_real_connected": false
+}

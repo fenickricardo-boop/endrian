@@ -1,0 +1,7 @@
+{
+  "essential": {"classification":"Esencial","price_kind":"exact","price":101,"delivery_window":"QA-WINDOW-5","includes":["QA capacidad funcional acotada"],"excludes":["Integraciones no declaradas"]},
+  "professional": {"classification":"Profesional","price_kind":"exact","price":202,"delivery_window":"QA-WINDOW-10","includes":["QA varias capacidades conocidas"],"excludes":["Desarrollo especializado no parametrizado"]},
+  "range_only": {"classification":"Profesional","price_kind":"range","range":"QA-150..250","delivery_window":"QA-WINDOW-PENDING"},
+  "personalized": {"classification":"Personalizado","price_kind":"quote","price":null,"delivery_window":null},
+  "note": "Todos los importes/unidades son ficticios, no monetarios y exclusivos de QA. No representan precios ENDRIAN."
+}

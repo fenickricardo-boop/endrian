@@ -1,0 +1,18 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.4",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "automated_regression": {"passed": 150, "failed": 0, "status": "PASS"},
+  "javascript_syntax": "PASS",
+  "http_health": "PASS",
+  "served_catalog_matches_source": "PASS",
+  "editorial_public_copy_v1_4_1": "PASS",
+  "professional_substitutions": "PASS",
+  "commercial_modes": "PASS",
+  "contact_general_contract": "PASS",
+  "payment_order_snapshot_regression": "PASS",
+  "desktop_browser_visual": "PENDING_MANUAL_REVIEW",
+  "mobile_browser_visual": "PENDING_MANUAL_REVIEW",
+  "visual_blocker": "El navegador remoto bloqueó localhost y no fue posible descargar un navegador local en esta sesión.",
+  "production": false,
+  "published": false
+}

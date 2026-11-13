@@ -1,0 +1,13 @@
+{
+  "total": 20,
+  "passed": 20,
+  "failed": 0,
+  "invariants": {
+    "qa_matrix_state_correct": true,
+    "order_is_simulation": true,
+    "matrix_is_simulation": true,
+    "no_real_email_sent": true,
+    "no_production_state_in_candidate": true
+  },
+  "global_result": "PASS"
+}

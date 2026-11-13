@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": {
+    "scrollY": 620,
+    "headerTop": 0,
+    "headerBottom": 68,
+    "headerHeight": 68,
+    "position": "sticky",
+    "backgroundColor": "rgb(0, 14, 25)",
+    "isolation": "isolate",
+    "boxShadow": "rgba(32, 215, 243, 0.14) 0px 1px 0px 0px, rgba(0, 0, 0, 0.32) 0px 8px 18px 0px",
+    "elementAtHeaderCenter": "HEADER_OR_DESCENDANT",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "scrollWidth": 390,
+    "horizontalOverflow": false
+  },
+  "evidence": "MOBILE_HEADER_SCROLL_OCCLUSION_390x844.png"
+}

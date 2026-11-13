@@ -1,0 +1,12 @@
+{
+  "global_result": "PASS",
+  "results": {
+    "C01": "PASS — orden S1→S2→S3→S4 consistente.",
+    "C02": "PASS — S4: confirmar→S5; material→S3; menor→S4; revisión→SH. S5→S3/S4/SH; SH nunca→S6 directo.",
+    "C03": "PASS — PaymentGate implementa 9 condiciones autoritativas, incluida aceptación expresa de plazo.",
+    "C04": "PASS — estados de pago y retornos deterministas; solo CONFIRMADO→S7.",
+    "C05": "PASS — idempotencia por propuesta + confirmación QA; replay devuelve misma orden.",
+    "C06": "PASS — recuperación restaura borrador/dimensionamiento/propuesta/pago/orden persistidos sin reejecución.",
+    "C07": "PASS — fuente y rollback fijados al SHA-256 exacto v0.1.2."
+  }
+}

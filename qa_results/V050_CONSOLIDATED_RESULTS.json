@@ -1,0 +1,36 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.0",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "result": "PASS_WITH_MANUAL_VISUAL_REVIEW_REQUIRED",
+  "regression": {
+    "passed": 131,
+    "failed": 0,
+    "python_compile": "PASS",
+    "javascript_syntax": "PASS"
+  },
+  "postpayment_cycle": {
+    "return_pending_without_order": "PASS",
+    "private_backend_confirmation": "PASS",
+    "unique_order": "PASS",
+    "repeat_confirmation_blocked": "PASS",
+    "reload_same_order": "PASS",
+    "finalization_rotates_session": "PASS",
+    "chat_and_contact_cleared": "PASS",
+    "new_session_does_not_inherit_order": "PASS",
+    "archived_order_preserved": "PASS",
+    "archived_snapshot_identical": "PASS",
+    "archived_output_without_transcript": "PASS"
+  },
+  "visual_browser": {
+    "status": "PENDING_MANUAL_REVIEW",
+    "reason": "El entorno de construcción no dispone de navegador ejecutable. No se declara evidencia visual automatizada."
+  },
+  "boundaries": {
+    "real_payment": false,
+    "real_email": false,
+    "real_ai": false,
+    "construction_started": false,
+    "production": false,
+    "published": false
+  }
+}

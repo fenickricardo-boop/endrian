@@ -1,0 +1,24 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.6",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "python_compile": "PASS",
+  "javascript_syntax": "PASS",
+  "pytest": {
+    "status": "PASS",
+    "passed": 97,
+    "failed": 0,
+    "warning": "Starlette TestClient deprecation warning; sin impacto funcional"
+  },
+  "required_controls": {
+    "workflow_validation_separation": "PASS",
+    "concurrent_causes_preserved": "PASS",
+    "manual_review_cannot_override_authority": "PASS",
+    "quotation_expiry_and_supersession": "PASS",
+    "no_transcript_projection_or_snapshot": "PASS",
+    "global_test_notice_contract": "PASS",
+    "payment_and_order_idempotency": "PASS",
+    "desktop_mobile_source_contract": "PASS"
+  },
+  "real_services": false,
+  "production": false
+}

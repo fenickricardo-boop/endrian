@@ -1,0 +1,25 @@
+{
+  "health": {
+    "ok": true,
+    "status": "QA / NO PRODUCCIÓN"
+  },
+  "served": [
+    "/",
+    "/static/app.js",
+    "/static/styles.css",
+    "/api/config",
+    "/static/agents_catalog.json"
+  ],
+  "server_stopped_cleanly": true,
+  "navigation_contract": {
+    "Volver a ENDRIAN": true,
+    "Agentes": true,
+    "Precios": true,
+    "Contacto": true,
+    "Nueva conversación": true,
+    "Privacidad_removed_from_main": true,
+    "starters_removed": true,
+    "contact_form_visible": true,
+    "privacy_secondary": true
+  }
+}

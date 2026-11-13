@@ -1,0 +1,28 @@
+{
+  "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.5",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "source_sha256": "202ec13a095e7175d45505dba2f880da15b18c8a66be6ff4972e20a4354243de",
+  "executed_at_utc": "2026-10-07T16:08:31Z",
+  "status": "PASS",
+  "checks": {
+    "pytest": {"result": "PASS", "passed": 87, "failed": 0},
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS",
+    "composer_single_component_compact_mode": "PASS",
+    "prepayment_data_complete_gate": "PASS",
+    "condition_version_and_utc_timestamp": "PASS",
+    "payment_attempt_double_click_idempotency": "PASS",
+    "payment_attempt_frozen_references": "PASS",
+    "qa_console_local_http": "PASS",
+    "qa_console_unlinked_from_public_ui": "PASS",
+    "payment_confirmed": "PASS",
+    "payment_rejected": "PASS",
+    "payment_cancelled": "PASS",
+    "payment_expired": "PASS",
+    "order_creation_idempotency": "PASS",
+    "public_payment_controls_absent": "PASS",
+    "public_qa_language_scan": "PASS",
+    "external_provider_called": false,
+    "real_financial_data_captured": false
+  }
+}

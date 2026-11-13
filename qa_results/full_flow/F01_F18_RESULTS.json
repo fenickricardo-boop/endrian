@@ -1,0 +1,23 @@
+{
+  "global_result": "PASS",
+  "results": {
+    "F01": "PASS — catálogo conserva 4 agentes y fichas vigentes.",
+    "F02": "PASS — Hablar con ENDRIAN/selección persiste en la misma sesión y propuesta.",
+    "F03": "PASS — R01 observa S1→S2→S3→S4 y puede derivar a S4 o SH.",
+    "F04": "PASS — registro visible usa qa_identity_ref, alias y email example.invalid; consentimientos separados; sin PII real.",
+    "F05": "PASS — propuesta distingue inclusiones, exclusiones, monto QA, plazo QA, vigencia y aceptaciones.",
+    "F06": "PASS — SH mantiene PaymentGate cerrado y solo retorna a S3/S4.",
+    "F07": "PASS — PENDIENTE/RECHAZADO/CANCELADO/EXPIRADO no crean orden.",
+    "F08": "PASS — CONFIRMADO crea una sola orden QA.",
+    "F09": "PASS — replay/refresh preservan order_id e idempotency_key.",
+    "F10": "PASS — email_preview se persiste con sent=false y provider=null.",
+    "F11": "PASS — recovery por qa_identity_ref restaura snapshot sin reejecutar pago u orden.",
+    "F12": "PASS — browser visual QA Desktop/Mobile sin overflow de controles visibles.",
+    "F13": "PASS — foco inicial, Tab dentro de modal y Escape verificados; Enter en composer preservado.",
+    "F14": "PASS — prefers-reduced-motion produce animation-name:none en indicador de carga.",
+    "F15": "PASS — flujo funcional opera con red externa bloqueada; sin secretos/cargos/proveedores reales.",
+    "F16": "PASS — schema/modelo no contiene autoridad sobre precio, plazo, pago, orden o matriz; reglas QA son deterministas.",
+    "F17": "PASS — START_LAB_QA.bat + start_lab_qa.py inician Uvicorn local, abren navegador y terminan explícitamente con Ctrl+C.",
+    "F18": "PASS — rollback incluye ZIP fuente byte-idéntico con SHA-256 exacto v0.1.2."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.10",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "baseline": {
+    "name": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.9.zip",
+    "size_bytes": 244519706,
+    "sha256": "64aaa071fd8ad4f3262a125091190ad87f35320f9f4d0a88bf92d958e6ced0b1",
+    "zip_integrity": "PASS"
+  },
+  "checks": {
+    "pytest": {"passed": 170, "failed": 0},
+    "python_compile": "PASS",
+    "javascript_syntax": "PASS",
+    "http_root": 200,
+    "http_health": 200,
+    "services_back_svg": "PASS_STATIC_AND_TEST",
+    "services_scroll_restore": "PASS_STATIC_AND_TEST",
+    "services_focus_restore": "PASS_STATIC_AND_TEST",
+    "prices_close_focus_restore": "PASS_STATIC_AND_TEST",
+    "no_session_or_message_side_effect": "PASS_STATIC_AND_TEST",
+    "desktop_browser_visual": "PENDING_MANUAL_REVIEW",
+    "mobile_browser_visual": "PENDING_MANUAL_REVIEW"
+  },
+  "visual_blocker": "El navegador QA disponible no accedió al servidor local: Missing or invalid bearer token.",
+  "screenshots": "NOT_GENERATED_NOT_CLAIMED",
+  "production": false
+}

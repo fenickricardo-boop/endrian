@@ -1,0 +1,17 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.1",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "regression": {"passed": 112, "failed": 0},
+  "delivery_copy": "PASS",
+  "billing_country": {"result": "PASS", "iso_entries": 249, "default_selection": null, "geolocation": false},
+  "phone_country_prefix": {"result": "PASS", "entries": 242, "default_selection": null, "structured_storage": true},
+  "acceptances": {"result": "PASS", "required": 2, "versioned": true, "marketing": false},
+  "standard_route": "PASS",
+  "special_route": "PASS",
+  "payment_return_pending": "PASS",
+  "unique_order": "PASS",
+  "email_preview_from_snapshot": "PASS",
+  "conversation_storage": {"location": "SQLite session snapshot / full_flow.conversation_evidence", "ttl_seconds_default": 86400, "exportable": false, "changed_in_this_build": false},
+  "browser_visual_evidence": {"result": "BLOCKED", "desktop": "NOT_EXECUTED", "mobile": "NOT_EXECUTED", "reason": "Loopback blocked in remote browser; local browser download unavailable"},
+  "final_status": "FUNCTIONAL_PASS_VISUAL_REVIEW_REQUIRED"
+}

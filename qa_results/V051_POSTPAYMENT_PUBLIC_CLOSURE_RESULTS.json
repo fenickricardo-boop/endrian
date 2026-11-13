@@ -1,0 +1,26 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.1",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "pytest": {"passed": 135, "failed": 0},
+  "python_compile": "PASS",
+  "javascript_syntax": "PASS",
+  "checks": {
+    "specific_title_from_snapshot": "PASS",
+    "missing_title_controlled_render": "PASS_CONTRACT",
+    "public_buttons_removed": "PASS_CONTRACT",
+    "single_finalize_cta": "PASS_CONTRACT",
+    "journey_complete_only_after_confirmation": "PASS_CONTRACT",
+    "order_idempotency": "PASS",
+    "finalization_clears_public_session": "PASS",
+    "archived_order_preserved": "PASS",
+    "snapshot_without_transcript": "PASS",
+    "email_preview_not_sent": "PASS"
+  },
+  "visual_desktop_mobile": "PENDING_MANUAL_REVIEW_NO_BROWSER_EXECUTABLE",
+  "boundaries": {
+    "real_payment": false,
+    "real_email": false,
+    "construction_started": false,
+    "published": false
+  }
+}

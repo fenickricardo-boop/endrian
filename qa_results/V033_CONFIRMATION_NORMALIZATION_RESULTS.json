@@ -1,0 +1,27 @@
+{
+  "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.3",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "source": {
+    "artifact": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.2.zip",
+    "sha256": "a72e4f4fea86cf9a32cf47b204f694ca0175e98898339f0cbe375f80e350f1ce"
+  },
+  "target_phrase": "No, eso es todo.",
+  "checks": {
+    "intent": "CONFIRM_NO_CHANGES",
+    "event": "SCOPE_CONFIRMED_SEMANTIC_EVENT",
+    "scope_versions_created": 1,
+    "state_transition": "S4_TO_S2",
+    "final_ui_state": "contact",
+    "question_repeated": false,
+    "duplicate_scope_on_replay": false,
+    "focused_tests": {"passed": 7, "failed": 0},
+    "full_regression": {"passed": 80, "failed": 0},
+    "javascript_syntax": "PASS",
+    "python_compile": "PASS"
+  },
+  "modified_functional_files": [
+    "app/service.py",
+    "tests/test_visible_journey_v032.py"
+  ],
+  "proposed_status": "READY_FOR_EDUARDO_LIA_RETEST"
+}

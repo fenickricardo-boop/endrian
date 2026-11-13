@@ -1,0 +1,27 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.3.8",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "functional_regression": {"passed": 100, "failed": 0},
+  "standard_route": {
+    "result": "PASS",
+    "terminal_state": "S7",
+    "payment_confirmation": "BACKEND_QA",
+    "unique_order": true,
+    "immutable_snapshot": true
+  },
+  "special_route": {
+    "result": "PASS",
+    "terminal_state": "SH",
+    "exception": "DEPENDENCIES_AND_MULTI_AREA_RESPONSIBILITY_REVIEW",
+    "quotation_count": 0,
+    "payment_enabled": false,
+    "order_created": false
+  },
+  "browser_visual_evidence": {
+    "result": "BLOCKED",
+    "reason": "Chromium executable unavailable; network policy prevented Playwright browser download",
+    "desktop": "NOT_EXECUTED",
+    "mobile": "NOT_EXECUTED"
+  },
+  "final_status": "FUNCTIONAL_PASS_VISUAL_EVIDENCE_BLOCKED"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PENDIENTE",
+  "reference": "PAY-QA-9DF275769D",
+  "amount": 89,
+  "currency": "USD",
+  "scope_version_id": "SCOPE-QA-0001",
+  "quotation_id": "END-QA-COT-0001",
+  "solution_request_version_id": "SOLREQ-QA-0001",
+  "quotation_version": 1,
+  "quotation_ref": "END-QA-COT-0001/v1",
+  "service_id": "especializado",
+  "service_label": "ENDRIAN Especializado",
+  "solution_title": "Solución para gestión de atención por correo",
+  "platform_label": "Entorno simulado de ENDRIAN",
+  "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+  "provider": null,
+  "checkout_url": null,
+  "started_at": "2026-10-28T12:08:40+00:00",
+  "simulation": true
+}

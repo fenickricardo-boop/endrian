@@ -1,0 +1,38 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.0",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "regression": {"passed": 108, "failed": 0},
+  "standard_route": {
+    "result": "PASS",
+    "country_required": true,
+    "price": 20,
+    "currency": "USD",
+    "delivery_window": "2 a 5 días hábiles",
+    "checkout_return_status": "PENDIENTE",
+    "backend_confirmation_required": true,
+    "terminal_state": "S7",
+    "unique_order": true,
+    "email_preview_sent": false
+  },
+  "special_route": {
+    "result": "PASS",
+    "country_required": true,
+    "quotation_count": 0,
+    "payment_enabled": false,
+    "terminal_state": "SH"
+  },
+  "payment_recovery": {
+    "rejected": "PASS",
+    "cancelled": "PASS",
+    "expired": "PASS",
+    "duplicate_order": "BLOCKED"
+  },
+  "no_transcript": {"client_output": "PASS", "order_snapshot": "PASS", "email_preview": "PASS"},
+  "browser_visual_evidence": {
+    "result": "BLOCKED",
+    "reason": "Local browser binary unavailable and cloud browser blocks loopback access",
+    "desktop": "NOT_EXECUTED",
+    "mobile": "NOT_EXECUTED"
+  },
+  "final_status": "FUNCTIONAL_PASS_VISUAL_REVIEW_REQUIRED"
+}

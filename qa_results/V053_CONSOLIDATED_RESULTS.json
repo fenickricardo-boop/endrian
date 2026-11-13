@@ -1,0 +1,15 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.5.3",
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "automated_tests": {"passed": 145, "failed": 0},
+  "javascript_syntax": "PASS",
+  "contact_general_isolated": "PASS",
+  "email_pdf_public_projection": "PASS",
+  "new_order_snapshot_schema": "v2",
+  "existing_orders_mutated": false,
+  "real_email": false,
+  "real_payment": false,
+  "real_ai": false,
+  "visual_browser_qa": "PENDING_MANUAL_REVIEW",
+  "visual_browser_blocker": "Localhost inaccessible to remote browser and no local browser executable available"
+}

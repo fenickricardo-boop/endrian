@@ -1,0 +1,304 @@
+{
+  "email_preview": {
+    "agent": "ENDRIAN Especializado",
+    "amount": 89,
+    "body": "Hola Ana Sintética,\n\nConfirmamos tu pago de prueba y recibimos tu pedido.\n\nOrden: END-20261028-0001\nSolución: Solución para gestión de atención por correo\nServicio contratado: ENDRIAN Especializado\nImporte: USD 89\nPlazo acordado: 2 a 5 días hábiles desde la confirmación del pago\n\nSiguiente paso: ENDRIAN continuará con la preparación y comprobación de la solución según el alcance confirmado.\n\nAdjuntamos un único PDF con el detalle y las condiciones de tu pedido.\n\nENDRIAN",
+    "conditions_version": "QA-CONDITIONS-0.2",
+    "conversation_evidence_included": false,
+    "currency": "USD",
+    "delivery_label": "Configuración preparada para el entorno acordado",
+    "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+    "dependencies": [
+      "Datos de casos incorporados manualmente en QA",
+      "Criterios de prioridad definidos",
+      "Ejemplos ficticios para pruebas",
+      "El equipo revisa los borradores antes de enviarlos."
+    ],
+    "external_service": false,
+    "features": [
+      "Clasificar consultas, reclamos y solicitudes.",
+      "Priorizar mensajes y pendientes según los criterios definidos.",
+      "Mantener seguimiento del estado de los casos.",
+      "Preparar borradores de respuesta para que el equipo los revise antes del envío.",
+      "Organizar el trabajo compartido del equipo de cuatro personas para mantener continuidad."
+    ],
+    "label": "Vista previa del correo · No enviado",
+    "order_id": "END-20261028-0001",
+    "order_status": "Pedido recibido",
+    "platform_label": "Entorno simulado de ENDRIAN",
+    "privacy_notice_version": "QA-PRIVACY-0.1",
+    "provider": null,
+    "sent": false,
+    "service": "ENDRIAN Especializado",
+    "simulation": true,
+    "solution_title": "Solución para gestión de atención por correo",
+    "subject": "Pedido confirmado · Orden END-20261028-0001",
+    "template_version": "ENDRIAN-POST-CONFIRMACION-1.1-QA",
+    "terms_version": "QA-TERMS-0.1",
+    "to": "ana.sintetica@example.net"
+  },
+  "internal_matrix_qa": {
+    "client_output": {
+      "agent": "ENDRIAN Especializado",
+      "amount_label": "USD 89",
+      "commitments": [
+        "Clasificar consultas, reclamos y solicitudes.",
+        "Priorizar mensajes y pendientes según los criterios definidos.",
+        "Mantener seguimiento del estado de los casos.",
+        "Preparar borradores de respuesta para que el equipo los revise antes del envío.",
+        "Organizar el trabajo compartido del equipo de cuatro personas para mantener continuidad."
+      ],
+      "conditions": [
+        "Pago simulado.",
+        "2 a 5 días hábiles desde la confirmación del pago.",
+        "El precio no incluye suscripciones, licencias ni consumo de servicios externos. Si tu agente los necesita, te indicaremos cuáles y sus costos antes del pago.",
+        "Las nuevas funciones y el acompañamiento posterior se gestionan por separado."
+      ],
+      "context": "Atención por correo de un equipo de cuatro personas",
+      "currency": "USD",
+      "deliverables": [
+        "Configuración especializada con instrucciones y criterios acordados.",
+        "Estructura para clasificar, priorizar y registrar el seguimiento.",
+        "Pruebas con ejemplos ficticios antes de la entrega.",
+        "Guía breve para comenzar a utilizar la configuración."
+      ],
+      "delivery_label": "Configuración preparada para el entorno acordado",
+      "delivery_notice": "Dato ficticio de plazo para QA; pendiente de aprobación operativa y comercial.",
+      "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+      "dependencies": [
+        "Datos de casos incorporados manualmente en QA",
+        "Criterios de prioridad definidos",
+        "Ejemplos ficticios para pruebas",
+        "El equipo revisa los borradores antes de enviarlos."
+      ],
+      "environment_label": "Entorno simulado de ENDRIAN",
+      "environment_notice": "Dato ficticio de plataforma para QA; pendiente de definición comercial.",
+      "information_input": "Tu equipo incorporará los datos de cada caso en el entorno acordado. Esta prueba no conecta ni lee cuentas de correo reales.",
+      "limits": [
+        "Sin envío autónomo de respuestas.",
+        "Sin conexión a cuentas de correo o sistemas externos.",
+        "Sin SLA, operación 24/7 ni acciones externas autónomas."
+      ],
+      "materials_needed": [
+        "Criterios de prioridad.",
+        "Ejemplos ficticios de consultas, reclamos y solicitudes.",
+        "Criterios de revisión de los borradores."
+      ],
+      "need_confirmed": "Organizar y dar seguimiento a las consultas de clientes recibidas por correo para que un equipo de cuatro personas pueda priorizar pendientes y mantener continuidad en la atención.",
+      "objective": "Reducir pérdidas y demoras en la gestión de solicitudes manteniendo el control del equipo.",
+      "order_ref": "END-20261028-0001",
+      "price": 89,
+      "quotation_ref": "END-QA-COT-0001/v1",
+      "quotation_valid_until": "2026-11-04T12:08:40+00:00",
+      "request_description": "Configuración especializada para organizar la atención por correo con criterios definidos y control del equipo.",
+      "request_title": "Solución para gestión de atención por correo",
+      "scope": "ENDRIAN preparará una configuración especializada para clasificar, priorizar y organizar el seguimiento de consultas, reclamos y solicitudes. La solución preparará borradores, pero no enviará respuestas ni se conectará a cuentas reales en esta prueba.",
+      "service": "ENDRIAN Especializado",
+      "why_fit": "Corresponde a una función concreta y acotada: organizar la atención por correo con criterios definidos y revisión del equipo."
+    },
+    "contracting_data": {
+      "billing_country": {
+        "country_code": "CL",
+        "country_name": "Chile"
+      },
+      "conditions_version": "QA-CONDITIONS-0.2",
+      "contract_terms_acceptance": {
+        "accepted": true,
+        "accepted_at": "2026-10-28T12:08:40+00:00",
+        "conditions_version": "QA-CONDITIONS-0.2",
+        "quotation_id": "END-QA-COT-0001",
+        "quotation_ref": "END-QA-COT-0001/v1",
+        "quotation_version": 1,
+        "scope_version_id": "SCOPE-QA-0001",
+        "solution_request_version_id": "SOLREQ-QA-0001",
+        "terms_version": "QA-TERMS-0.1"
+      },
+      "contract_terms_accepted": true,
+      "email": "ana.sintetica@example.net",
+      "name": "Ana Sintética",
+      "phone": null,
+      "privacy_acceptance": {
+        "accepted": true,
+        "accepted_at": "2026-10-28T12:08:40+00:00",
+        "privacy_notice_version": "QA-PRIVACY-0.1",
+        "quotation_id": "END-QA-COT-0001",
+        "quotation_ref": "END-QA-COT-0001/v1",
+        "quotation_version": 1,
+        "scope_version_id": "SCOPE-QA-0001",
+        "solution_request_version_id": "SOLREQ-QA-0001"
+      },
+      "privacy_authorization_accepted": true,
+      "privacy_notice_version": "QA-PRIVACY-0.1",
+      "quotation_id": "END-QA-COT-0001",
+      "quotation_ref": "END-QA-COT-0001/v1",
+      "quotation_version": 1,
+      "scope_version_id": "SCOPE-QA-0001",
+      "simulation": true,
+      "solution_request_version_id": "SOLREQ-QA-0001",
+      "terms_version": "QA-TERMS-0.1"
+    },
+    "conversation_evidence_ref": "INTERNAL_ONLY",
+    "simulation": true,
+    "status": "MATRIZ INTERNA QA / POST-PAGO / NO PRODUCCIÓN",
+    "traceability": {
+      "order_id": "END-20261028-0001",
+      "quotation_id": "END-QA-COT-0001",
+      "quotation_version": 1,
+      "scope_version_id": "SCOPE-QA-0001",
+      "solution_request_version_id": "SOLREQ-QA-0001"
+    }
+  },
+  "order": {
+    "amount_label": "USD 89",
+    "construction_request_snapshot": {
+      "acceptances": {
+        "contract_terms": {
+          "accepted": true,
+          "accepted_at": "2026-10-28T12:08:40+00:00",
+          "conditions_version": "QA-CONDITIONS-0.2",
+          "quotation_id": "END-QA-COT-0001",
+          "quotation_ref": "END-QA-COT-0001/v1",
+          "quotation_version": 1,
+          "scope_version_id": "SCOPE-QA-0001",
+          "solution_request_version_id": "SOLREQ-QA-0001",
+          "terms_version": "QA-TERMS-0.1"
+        },
+        "privacy": {
+          "accepted": true,
+          "accepted_at": "2026-10-28T12:08:40+00:00",
+          "privacy_notice_version": "QA-PRIVACY-0.1",
+          "quotation_id": "END-QA-COT-0001",
+          "quotation_ref": "END-QA-COT-0001/v1",
+          "quotation_version": 1,
+          "scope_version_id": "SCOPE-QA-0001",
+          "solution_request_version_id": "SOLREQ-QA-0001"
+        }
+      },
+      "agent": "ENDRIAN Especializado",
+      "amount": 89,
+      "commercial_rules_version": "QA-COMMERCIAL-0.5",
+      "commitments": [
+        {
+          "item_id": "PRO-CAP-001",
+          "label": "Clasificar consultas, reclamos y solicitudes."
+        },
+        {
+          "item_id": "PRO-CAP-004",
+          "label": "Priorizar mensajes y pendientes según los criterios definidos."
+        },
+        {
+          "item_id": "PRO-CAP-005",
+          "label": "Mantener seguimiento del estado de los casos."
+        },
+        {
+          "item_id": "PRO-CAP-002",
+          "label": "Preparar borradores de respuesta para que el equipo los revise antes del envío."
+        },
+        {
+          "item_id": "PRO-CAP-006",
+          "label": "Organizar el trabajo compartido del equipo de cuatro personas para mantener continuidad."
+        }
+      ],
+      "conditions_version": "QA-CONDITIONS-0.2",
+      "contact": {
+        "billing_country": {
+          "country_code": "CL",
+          "country_name": "Chile"
+        },
+        "email": "ana.sintetica@example.net",
+        "name": "Ana Sintética",
+        "phone": null
+      },
+      "context": "Atención por correo de un equipo de cuatro personas",
+      "controls": [
+        {
+          "item_id": "PRO-CTL-001",
+          "label": "El equipo revisa los borradores antes de enviarlos."
+        }
+      ],
+      "conversation_evidence_included": false,
+      "currency": "USD",
+      "deliverables": [
+        "Configuración especializada con instrucciones y criterios acordados.",
+        "Estructura para clasificar, priorizar y registrar el seguimiento.",
+        "Pruebas con ejemplos ficticios antes de la entrega.",
+        "Guía breve para comenzar a utilizar la configuración."
+      ],
+      "delivery_label": "Configuración preparada para el entorno acordado",
+      "delivery_mode": "ENDRIAN_MANAGED_ACCESS",
+      "delivery_notice": "Dato ficticio de plazo para QA; pendiente de aprobación operativa y comercial.",
+      "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+      "dependencies": [
+        "Datos de casos incorporados manualmente en QA",
+        "Criterios de prioridad definidos",
+        "Ejemplos ficticios para pruebas",
+        "El equipo revisa los borradores antes de enviarlos."
+      ],
+      "environment_id": "ENV-ENDRIAN-MANAGED",
+      "exclusions": [
+        {
+          "item_id": "PRO-EXC-002",
+          "label": "Sin envío autónomo de respuestas."
+        },
+        {
+          "item_id": "PRO-EXC-003",
+          "label": "Sin conexión a cuentas de correo o sistemas externos."
+        },
+        {
+          "item_id": "PRO-EXC-004",
+          "label": "Sin SLA, operación 24/7 ni acciones externas autónomas."
+        }
+      ],
+      "immutable": true,
+      "information_input": "Tu equipo incorporará los datos de cada caso en el entorno acordado. Esta prueba no conecta ni lee cuentas de correo reales.",
+      "materials_needed": [
+        "Criterios de prioridad.",
+        "Ejemplos ficticios de consultas, reclamos y solicitudes.",
+        "Criterios de revisión de los borradores."
+      ],
+      "matrix_item_ids": [
+        "PRO-CAP-001",
+        "PRO-CAP-004",
+        "PRO-CAP-005",
+        "PRO-CAP-002",
+        "PRO-CAP-006",
+        "PRO-CTL-001"
+      ],
+      "matrix_version": "0.2.1",
+      "need_confirmed": "Organizar y dar seguimiento a las consultas de clientes recibidas por correo para que un equipo de cuatro personas pueda priorizar pendientes y mantener continuidad en la atención.",
+      "objective": "Reducir pérdidas y demoras en la gestión de solicitudes manteniendo el control del equipo.",
+      "particular_conditions": [],
+      "payment_reference": "PAY-QA-9DF275769D",
+      "payment_status": "CONFIRMADO",
+      "platform_label": "Entorno simulado de ENDRIAN",
+      "platform_notice": "Dato ficticio de plataforma para QA; pendiente de definición comercial.",
+      "privacy_notice_version": "QA-PRIVACY-0.1",
+      "quotation_ref": "END-QA-COT-0001/v1",
+      "scope": "ENDRIAN preparará una configuración especializada para clasificar, priorizar y organizar el seguimiento de consultas, reclamos y solicitudes. La solución preparará borradores, pero no enviará respuestas ni se conectará a cuentas reales en esta prueba.",
+      "scope_version_id": "SCOPE-QA-0001",
+      "service_id": "especializado",
+      "service_label": "ENDRIAN Especializado",
+      "snapshot_version": 3,
+      "solution_request_version_id": "SOLREQ-QA-0001",
+      "solution_title": "Solución para gestión de atención por correo",
+      "terms_version": "QA-TERMS-0.1",
+      "why_fit": "Corresponde a una función concreta y acotada: organizar la atención por correo con criterios definidos y revisión del equipo."
+    },
+    "created_at": "2026-10-28T12:08:40+00:00",
+    "delivery_window": "2 a 5 días hábiles desde la confirmación del pago",
+    "idempotency_key": "8cb6135b1590d99c72f23da35c3ee069a8b2ac68b352e6b5826e7617bc1d4873",
+    "need_confirmed": "Organizar y dar seguimiento a las consultas de clientes recibidas por correo para que un equipo de cuatro personas pueda priorizar pendientes y mantener continuidad en la atención.",
+    "next_step": "REVISIÓN INTERNA",
+    "order_id": "END-20261028-0001",
+    "quotation_id": "END-QA-COT-0001",
+    "quotation_version": 1,
+    "scope_version_id": "SCOPE-QA-0001",
+    "selected_agent": null,
+    "simulation": true,
+    "solution_request_version_id": "SOLREQ-QA-0001",
+    "status": "RECIBIDA"
+  },
+  "simulation": true,
+  "snapshot_sha256": "5e587755aee51d2cd6789d31681e568f5c70ab0c9dfb5e55efc4a580d3f40af3",
+  "archived_at_epoch": 1793189320
+}

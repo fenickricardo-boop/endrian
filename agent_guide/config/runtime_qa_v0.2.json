@@ -1,0 +1,13 @@
+{
+  "version":"0.2",
+  "status":"NÚCLEO DE CONTROL + CAPA CONVERSACIONAL INTEGRABLE / PRUEBAS DE CAJA NEGRA / QA / NO PRODUCCIÓN",
+  "entrypoint":"candidate.conversational_agent.handle_message",
+  "network":false,
+  "real_model":false,
+  "real_registration":false,
+  "real_email":false,
+  "real_payment":false,
+  "real_orders":false,
+  "production_lab":false,
+  "simulation":true
+}

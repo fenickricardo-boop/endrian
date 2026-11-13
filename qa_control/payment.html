@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Control local de pagos</title>
+  <link rel="stylesheet" href="/qa-control/payment.css">
+</head>
+<body>
+  <main>
+    <p class="eyebrow">QA_CONTROLLED_TEST_ONLY</p>
+    <h1>Control local de pagos</h1>
+    <p>Esta superficie no pertenece a la experiencia del cliente y solo opera desde localhost.</p>
+    <label>Referencia válida del intento<input id="reference" autocomplete="off" placeholder="PAY-QA-XXXXXXXXXX"></label>
+    <p id="referenceStatus" aria-live="polite">Buscando el intento pendiente de esta sesión…</p>
+    <div class="actions">
+      <button data-outcome="confirmed">Confirmado</button>
+      <button data-outcome="rejected">Rechazado</button>
+      <button data-outcome="cancelled">Cancelado</button>
+      <button data-outcome="expired">Expirado</button>
+    </div>
+    <pre id="result" aria-live="polite">Esperando una referencia.</pre>
+    <p><a href="/" id="returnToLab">Volver al Laboratorio</a></p>
+  </main>
+  <script src="/qa-control/payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.6",
+  "base": {
+    "build": "ENDRIAN_LAB_FULL_FLOW_QA_v0.4.5",
+    "size_bytes": 243419800,
+    "sha256": "25393296aba806a10c914476f73fdb15ba2cfb795fff92915c531abbec77241d"
+  },
+  "environment": "QA_CONTROLLED_TEST_ONLY",
+  "automated_regression": {
+    "result": "PASS",
+    "tests_passed": 126,
+    "tests_failed": 0,
+    "warnings": 1
+  },
+  "focused_checks": {
+    "result": "PASS",
+    "tests_passed": 11,
+    "arbitrary_names_and_valid_email_domains": "PASS",
+    "phone_empty_valid_partial_and_recovery": "PASS",
+    "structured_422_translation": "PASS",
+    "no_object_object": "PASS",
+    "payment_pending_before_private_confirmation": "PASS",
+    "unique_order_under_repeated_confirmation": "PASS",
+    "email_preview_unsent_and_snapshot_derived": "PASS",
+    "visual_css_dom_contracts": "PASS"
+  },
+  "external_operations": {
+    "email_sent": false,
+    "sms_sent": false,
+    "payment_charged": false,
+    "external_verification": false
+  },
+  "browser_evidence": {
+    "status": "BLOCKED_IN_EXECUTION_ENVIRONMENT",
+    "reason": "Chromium runtime download returned a truncated archive; no browser screenshots were fabricated.",
+    "manual_review_required": ["desktop", "mobile"]
+  }
+}
