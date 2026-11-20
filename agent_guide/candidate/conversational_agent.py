@@ -114,7 +114,10 @@ class ConversationalGuideQA:
         s.state="REGISTRO PENDIENTE"
         need=(s.interpreted_need or s.original_need or "").strip()
         intro=f'Para avanzar con "{need}", n' if need else "N"
-        return self._out(s,"REGISTRATION_REQUIRED",f"{intro}ecesitamos crear tu solicitud QA. Indica tu nombre, correo y confirma que aceptas el tratamiento necesario de datos y las comunicaciones operativas. Marketing es opcional.", reference=REFS["registration"])
+        return self._out(s,"REGISTRATION_REQUIRED",
+            f'{intro}ecesitamos crear tu solicitud QA con datos de ejemplo (nunca datos reales). '
+            f'Escribe algo así: «Me llamo Ana Pérez, mi correo es ana@example.invalid, acepto tratamiento y acepto comunicaciones operativas.» Marketing es opcional.',
+            reference=REFS["registration"])
 
     def _out(self,s,event,message,**extra):
         obj={"event":event,"session_id":s.session_id,"state":s.state,"simulation":True,"message":message,"required_action":extra.pop("required_action",None),"reference":extra.pop("reference",REFS["states"]),"data":extra}
@@ -193,7 +196,10 @@ class ConversationalGuideQA:
                     m["pending_question"]=q
                     return self._out(s,"DIMENSIONING_QUESTION",q,required_action="RESPOND_MATERIAL_QUESTION",reference=REFS["dimensioning"])
                 return self._out(s,"REGISTRATION_ACCEPTED_QA","Registro QA completado. Continuaré con el dimensionamiento sin pedir datos que no cambien la decisión.",reference=REFS["registration"])
-            return self._out(s,"REGISTRATION_INCOMPLETE","Faltan datos de registro QA: nombre, correo y aceptación separada de tratamiento necesario y comunicaciones operativas.",reference=REFS["registration"])
+            return self._out(s,"REGISTRATION_INCOMPLETE",
+                'No reconocí todos los datos necesarios. Usa este formato exacto, con datos de ejemplo (nunca reales): '
+                '«Me llamo Ana Pérez, mi correo es ana@example.invalid, acepto tratamiento y acepto comunicaciones operativas.»',
+                reference=REFS["registration"])
 
         # First/broad need.
         if not s.original_need:

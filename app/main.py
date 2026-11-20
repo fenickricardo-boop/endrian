@@ -349,7 +349,7 @@ def chat(payload: ChatIn, request: Request):
         raise HTTPException(status_code=429, detail="Esta conversación alcanzó el máximo de turnos. Inicia una nueva conversación.")
     text = payload.message.strip()
     if contains_obvious_personal_data(text):
-        result={"ok":False,"event":"QA_PERSONAL_DATA_BLOCKED","simulation":True,"message":"Por seguridad, no ingreses correos, teléfonos, RUT, tarjetas ni otros datos personales reales. Usa ejemplos ficticios."}
+        result={"ok":False,"event":"QA_PERSONAL_DATA_BLOCKED","simulation":True,"message":"Por seguridad, no ingreses correos, teléfonos, RUT, tarjetas ni otros datos personales reales. Usa un correo de ejemplo como nombre@example.invalid."}
         return _json_result(result,sid,fail_status=400)
     required_model_key = {"real": "OPENAI_API_KEY", "gemini": "GEMINI_API_KEY"}.get(settings.model_mode)
     if required_model_key and not os.getenv(required_model_key):
