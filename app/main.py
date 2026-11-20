@@ -351,8 +351,9 @@ def chat(payload: ChatIn, request: Request):
     if contains_obvious_personal_data(text):
         result={"ok":False,"event":"QA_PERSONAL_DATA_BLOCKED","simulation":True,"message":"Por seguridad, no ingreses correos, teléfonos, RUT, tarjetas ni otros datos personales reales. Usa ejemplos ficticios."}
         return _json_result(result,sid,fail_status=400)
-    if settings.real_model_enabled and not os.getenv("OPENAI_API_KEY"):
-        result={"ok":False,"event":"MODEL_NOT_CONFIGURED","simulation":True,"message":"El modo real no está configurado. Este candidato debe ejecutarse con MODEL_MODE=deterministic."}
+    required_model_key = {"real": "OPENAI_API_KEY", "gemini": "GEMINI_API_KEY"}.get(settings.model_mode)
+    if required_model_key and not os.getenv(required_model_key):
+        result={"ok":False,"event":"MODEL_NOT_CONFIGURED","simulation":True,"message":f"Falta configurar {required_model_key} para MODEL_MODE={settings.model_mode}. Usa MODEL_MODE=deterministic mientras tanto."}
         return _json_result(result,sid,fail_status=503)
     return _json_result(service.chat(sid,text),sid)
 
