@@ -434,7 +434,12 @@ class GuideService:
                 if core_result.get("event") in {"PRELIMINARY_UNDERSTANDING", "REGISTRATION_REQUIRED"}:
                     app_meta["ui_state"] = "preliminary"
                     set_state(flow, "S1", "PRELIMINARY_UNDERSTANDING_READY")
-                    result["message"] = "Preparé una comprensión preliminar de tu necesidad. Revísala para continuar."
+                    if core_result.get("event") == "PRELIMINARY_UNDERSTANDING":
+                        result["message"] = "Preparé una comprensión preliminar de tu necesidad. Revísala para continuar."
+                    # REGISTRATION_REQUIRED already carries its own actionable
+                    # message (what to provide: name, email, consent) — the
+                    # generic placeholder above was silently replacing it,
+                    # leaving the user with no visible next step.
                 elif core_result.get("event") == "CLARIFICATION_REQUIRED":
                     set_state(flow, "S1", "MATERIAL_CLARIFICATION_REQUIRED")
                 if proposal:
