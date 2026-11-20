@@ -6,6 +6,27 @@ import os
 from .model_schema import ModelProposal
 from .model_validator import validate_proposal
 
+
+def _strip_additional_properties(node: Any) -> None:
+    # The Gemini Developer API (as opposed to Vertex AI) rejects any
+    # "additionalProperties"/"additional_properties" key in a JSON schema —
+    # Pydantic's extra="forbid" config adds it at every object level, so
+    # ModelProposal's raw model_json_schema() can't be sent to Gemini as-is.
+    if isinstance(node, dict):
+        node.pop("additionalProperties", None)
+        node.pop("additional_properties", None)
+        for value in node.values():
+            _strip_additional_properties(value)
+    elif isinstance(node, list):
+        for item in node:
+            _strip_additional_properties(item)
+
+
+def _gemini_response_schema() -> Dict[str, Any]:
+    schema = ModelProposal.model_json_schema()
+    _strip_additional_properties(schema)
+    return schema
+
 SYSTEM_INSTRUCTIONS = """You are the language interpretation adapter for ENDRIAN Agente Guía QA.
 Your output is a structured proposal only. You do not control workflow state, pricing, delivery windows,
 payments, orders, commercial classification, or production matrices.
@@ -136,7 +157,7 @@ class GeminiModelAdapter:
         config = types.GenerateContentConfig(
             system_instruction=instructions,
             response_mime_type="application/json",
-            response_schema=ModelProposal,
+            response_schema=_gemini_response_schema(),
             max_output_tokens=self.max_output_tokens,
             temperature=0.2,
             thinking_config=types.ThinkingConfig(thinking_budget=0),

@@ -38,8 +38,12 @@ class Settings:
     app_env: str = os.getenv("APP_ENV", "local")
     model_mode: str = os.getenv("MODEL_MODE", "deterministic").strip().lower()
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-5.6-terra")
-    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
     max_output_tokens: int = _int("OPENAI_MAX_OUTPUT_TOKENS", 700)
+    # Gemini's "thinking" tokens are billed against the same output budget as
+    # the actual JSON answer, so it needs a higher ceiling than OpenAI's
+    # reasoning-effort-based accounting to avoid truncating mid-response.
+    gemini_max_output_tokens: int = _int("GEMINI_MAX_OUTPUT_TOKENS", 2048)
     session_ttl_seconds: int = _int("SESSION_TTL_SECONDS", 86400)
     max_turns_per_session: int = _int("MAX_TURNS_PER_SESSION", 30)
     ip_requests_per_minute: int = _int("IP_REQUESTS_PER_MINUTE", 60)

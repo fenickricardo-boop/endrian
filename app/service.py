@@ -104,7 +104,7 @@ class GuideService:
         self._lock = threading.RLock()
         self.model_adapter = (
             OpenAIModelAdapter(settings.openai_model, settings.max_output_tokens) if settings.model_mode == "real"
-            else GeminiModelAdapter(settings.gemini_model, settings.max_output_tokens) if settings.model_mode == "gemini"
+            else GeminiModelAdapter(settings.gemini_model, settings.gemini_max_output_tokens) if settings.model_mode == "gemini"
             else DeterministicModelAdapter()
         )
 
