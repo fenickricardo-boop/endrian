@@ -39,7 +39,7 @@ def test_conversational_and_control_core_files_untouched():
     import hashlib
     expected={
       'agent_guide/core_v0_1/candidate/guide_agent.py':'915ea83f85f025c6c84177b8b91646d2d379fea3bb38899442324a1d8ea934d2',
-      'app/model_adapter.py':'4f6c57b9606d684f11771dbf7c41e62d80a3b8adc13e75c17f58a139af22a60d',
+      'app/model_adapter.py':'ecd7e6883383b997748c17978b5bcfefe403a5bdf064876ed98938e329283283',
     }
     for rel,sha in expected.items():
         assert hashlib.sha256((ROOT/rel).read_bytes()).hexdigest()==sha

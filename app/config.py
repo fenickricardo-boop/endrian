@@ -38,6 +38,7 @@ class Settings:
     app_env: str = os.getenv("APP_ENV", "local")
     model_mode: str = os.getenv("MODEL_MODE", "deterministic").strip().lower()
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-5.6-terra")
+    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
     max_output_tokens: int = _int("OPENAI_MAX_OUTPUT_TOKENS", 700)
     session_ttl_seconds: int = _int("SESSION_TTL_SECONDS", 86400)
     max_turns_per_session: int = _int("MAX_TURNS_PER_SESSION", 30)
@@ -58,7 +59,7 @@ class Settings:
 
     @property
     def real_model_enabled(self) -> bool:
-        return self.model_mode == "real"
+        return self.model_mode in {"real", "gemini"}
 
     @property
     def qa_control_enabled(self) -> bool:

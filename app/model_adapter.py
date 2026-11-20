@@ -93,6 +93,78 @@ class OpenAIModelAdapter:
         )
 
 
+class GeminiModelAdapter:
+    """Free-tier alternative to OpenAIModelAdapter: same interpret() contract,
+    backed by Google's Gemini API (google-genai SDK) instead of OpenAI's
+    Responses API. Structured output still goes through ModelProposal /
+    validate_proposal, so the rest of the app (service.py, model_validator.py)
+    is unaware of which provider produced the proposal."""
+
+    def __init__(self, model: str, max_output_tokens: int = 700):
+        self.model = model
+        self.max_output_tokens = max_output_tokens
+
+    def _client(self):
+        from google import genai
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            raise RuntimeError("GEMINI_API_KEY is not configured")
+        return genai.Client(api_key=api_key)
+
+    def interpret(self, payload: Dict[str, Any]) -> ModelAdapterResult:
+        from google.genai import types
+        client = self._client()
+        contents: List[Dict[str, Any]] = []
+        for item in payload.get("conversation", [])[-12:]:
+            role = item.get("role")
+            text = str(item.get("text", ""))[:1200]
+            if role == "user" and text:
+                contents.append({"role": "user", "parts": [{"text": text}]})
+            elif role == "assistant" and text:
+                contents.append({"role": "model", "parts": [{"text": text}]})
+        latest = str(payload.get("latest_user_message", ""))[:1200]
+        if latest:
+            contents.append({"role": "user", "parts": [{"text": latest}]})
+        if not contents:
+            contents = [{"role": "user", "parts": [{"text": "Continuar conversación QA."}]}]
+        context = {
+            "state": payload.get("state"),
+            "known": payload.get("known", {}),
+            "task": "interpret_next_user_message",
+        }
+        instructions = SYSTEM_INSTRUCTIONS + "\nCurrent QA context (non-authoritative): " + repr(context)
+        config = types.GenerateContentConfig(
+            system_instruction=instructions,
+            response_mime_type="application/json",
+            response_schema=ModelProposal,
+            max_output_tokens=self.max_output_tokens,
+            temperature=0.2,
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
+        )
+        last_error = None
+        for attempt in (1, 2):
+            try:
+                response = client.models.generate_content(model=self.model, contents=contents, config=config)
+                parsed = response.parsed
+                if parsed is None:
+                    raise ValueError("structured output missing")
+                return ModelAdapterResult(
+                    proposal=validate_proposal(parsed),
+                    used_real_model=True,
+                    valid=True,
+                    attempts=attempt,
+                )
+            except Exception as exc:  # one retry, then deterministic fallback
+                last_error = f"{type(exc).__name__}: {exc}"
+        return ModelAdapterResult(
+            proposal=None,
+            used_real_model=True,
+            valid=False,
+            attempts=2,
+            fallback_reason=last_error or "invalid structured output",
+        )
+
+
 class DeterministicModelAdapter:
     def interpret(self, payload: Dict[str, Any]) -> ModelAdapterResult:
         return ModelAdapterResult(

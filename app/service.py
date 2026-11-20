@@ -59,7 +59,7 @@ from .full_flow import (
     utc_now,
     validate_client_output,
 )
-from .model_adapter import DeterministicModelAdapter, OpenAIModelAdapter
+from .model_adapter import DeterministicModelAdapter, GeminiModelAdapter, OpenAIModelAdapter
 from .model_signal_policy import DeterministicModelSignalPolicy
 from .session_repository import SessionRepository
 
@@ -103,8 +103,9 @@ class GuideService:
         self.runtime = ConversationalGuideQA()
         self._lock = threading.RLock()
         self.model_adapter = (
-            OpenAIModelAdapter(settings.openai_model, settings.max_output_tokens)
-            if settings.real_model_enabled else DeterministicModelAdapter()
+            OpenAIModelAdapter(settings.openai_model, settings.max_output_tokens) if settings.model_mode == "real"
+            else GeminiModelAdapter(settings.gemini_model, settings.max_output_tokens) if settings.model_mode == "gemini"
+            else DeterministicModelAdapter()
         )
 
     @staticmethod
