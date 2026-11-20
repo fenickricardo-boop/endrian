@@ -435,7 +435,16 @@ class GuideService:
                     app_meta["ui_state"] = "preliminary"
                     set_state(flow, "S1", "PRELIMINARY_UNDERSTANDING_READY")
                     if core_result.get("event") == "PRELIMINARY_UNDERSTANDING":
-                        result["message"] = "Preparé una comprensión preliminar de tu necesidad. Revísala para continuar."
+                        need = (s.interpreted_need or "").strip()
+                        objective = (s.objective or "").strip()
+                        if need:
+                            result["message"] = (
+                                f"Entendí lo siguiente: {need}" + (f" {objective}" if objective else "") +
+                                " Cuéntame un poco más (por ejemplo volumen, canal o urgencia) para afinarlo, "
+                                "o escribe \"continuar\" si esto ya refleja lo que necesitas."
+                            )
+                        else:
+                            result["message"] = "Preparé una comprensión preliminar de tu necesidad. Revísala para continuar."
                     # REGISTRATION_REQUIRED already carries its own actionable
                     # message (what to provide: name, email, consent) — the
                     # generic placeholder above was silently replacing it,

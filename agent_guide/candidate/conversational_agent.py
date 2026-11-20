@@ -112,7 +112,9 @@ class ConversationalGuideQA:
 
     def _registration_request(self,s):
         s.state="REGISTRO PENDIENTE"
-        return self._out(s,"REGISTRATION_REQUIRED","Para continuar y conservar lo que ya me contaste, necesitamos crear tu solicitud QA. Indica tu nombre, correo y confirma que aceptas el tratamiento necesario de datos y las comunicaciones operativas. Marketing es opcional.", reference=REFS["registration"])
+        need=(s.interpreted_need or s.original_need or "").strip()
+        intro=f'Para avanzar con "{need}", n' if need else "N"
+        return self._out(s,"REGISTRATION_REQUIRED",f"{intro}ecesitamos crear tu solicitud QA. Indica tu nombre, correo y confirma que aceptas el tratamiento necesario de datos y las comunicaciones operativas. Marketing es opcional.", reference=REFS["registration"])
 
     def _out(self,s,event,message,**extra):
         obj={"event":event,"session_id":s.session_id,"state":s.state,"simulation":True,"message":message,"required_action":extra.pop("required_action",None),"reference":extra.pop("reference",REFS["states"]),"data":extra}
