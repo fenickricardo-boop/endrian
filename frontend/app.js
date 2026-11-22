@@ -69,6 +69,17 @@
     };
     revealLatest(true);
   }
+  let quickReplySeq=0;
+  function appendQuickReply(label,value,secondaryLabel){
+    const uid=`qr${++quickReplySeq}`;
+    const row=document.createElement('div');
+    row.className='message assistant quick-reply-row';
+    row.innerHTML=`<div class="agent-mark" aria-hidden="true">✦</div><div class="bubble quick-reply"><div class="card-actions">${actionButton(uid+'p',label)}${secondaryLabel?actionButton(uid+'s',secondaryLabel,true):''}</div></div>`;
+    els.history.appendChild(row);
+    row.querySelector('#'+uid+'p').onclick=()=>{row.remove();send(value)};
+    if(secondaryLabel)row.querySelector('#'+uid+'s').onclick=()=>{row.remove();els.input.focus()};
+    revealLatest(true);
+  }
   function loading(on){busy=on;els.send.disabled=on;els.input.disabled=on;const old=$('#typingRow');if(old)old.remove();if(on){const row=document.createElement('div');row.id='typingRow';row.className='message assistant';row.setAttribute('role','status');row.setAttribute('aria-label','ENDRIAN está preparando la respuesta');row.innerHTML='<div class="agent-mark">✦</div><div class="bubble"><span class="loading-dot"><span></span><span></span><span></span></span></div>';els.history.appendChild(row);$('#conversationScroll').scrollTop=$('#conversationScroll').scrollHeight}}
 
   const journeySteps=[
@@ -186,7 +197,7 @@
 
   async function loadSession(){session=await api('/api/session');els.history.innerHTML='';(session.history||[]).forEach(m=>appendMessage(m.role,m.text));renderAll();followLatest=true;revealLatest(true)}
   async function finalizeConversation(){const out=await api('/api/full-flow/conversation/finalize',{method:'POST',body:'{}'});session=out.summary;editingContact=false;els.history.innerHTML='';renderAll();history.replaceState(null,'',location.pathname)}
-  async function send(text){const value=(text??els.input.value).trim();if(!value||busy)return;const shouldFollow=nearChatBottom();appendMessage('user',value);els.input.value='';loading(true);try{const out=await api('/api/chat',{method:'POST',body:JSON.stringify({message:value})});loading(false);appendMessage('assistant',out.message||'');if(out.summary)session=out.summary;renderAll();if(out.event==='REGISTRATION_REQUIRED')appendRegistrationForm();revealLatest(shouldFollow)}catch(e){loading(false);appendMessage('assistant',e.body?.message||e.message||'No fue posible procesar el mensaje.');revealLatest(shouldFollow)}}
+  async function send(text){const value=(text??els.input.value).trim();if(!value||busy)return;const shouldFollow=nearChatBottom();appendMessage('user',value);els.input.value='';loading(true);try{const out=await api('/api/chat',{method:'POST',body:JSON.stringify({message:value})});loading(false);appendMessage('assistant',out.message||'');if(out.summary)session=out.summary;renderAll();if(out.event==='REGISTRATION_REQUIRED')appendRegistrationForm();else if(out.event==='ORIENTATION_READY')appendQuickReply('Confirmar, esto es lo que necesito','confirmo la orientación','Quiero ajustar algo');revealLatest(shouldFollow)}catch(e){loading(false);appendMessage('assistant',e.body?.message||e.message||'No fue posible procesar el mensaje.');revealLatest(shouldFollow)}}
 
   let lastDrawerTrigger=null;
   const publicDrawers=()=>[els.servicesDrawer,els.drawer,els.contactDrawer];
