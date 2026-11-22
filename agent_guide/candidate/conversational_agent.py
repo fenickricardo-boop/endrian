@@ -230,7 +230,18 @@ class ConversationalGuideQA:
 
         # After registration, consume natural-language answers and accumulate dimensioning.
         if s.registration and s.state in {"DIMENSIONAMIENTO INCOMPLETO","ORIENTACIÓN EN REVISIÓN","PROPUESTA DISPONIBLE","PRECIO PENDIENTE","PAGO DISPONIBLE","PAGO PENDIENTE"}:
-            if any(x in low for x in ["esta orientación refleja", "confirmo la orientación", "sí, refleja", "si, refleja"]):
+            # The exact phrases below always confirm. A broader set of natural
+            # affirmatives is also accepted, but only while ORIENTACIÓN EN
+            # REVISIÓN is the current state — elsewhere (e.g. PAGO PENDIENTE)
+            # a loose "está bien"/"sí" could be an unrelated reply and would
+            # wrongly re-open a proposal instead of progressing payment.
+            orientation_confirmed = any(x in low for x in ["esta orientación refleja", "confirmo la orientación", "sí, refleja", "si, refleja"]) or (
+                s.state=="ORIENTACIÓN EN REVISIÓN" and (
+                    any(x in low for x in ["me sirve","eso es lo que necesito","eso es justo lo que necesito","está bien","esta bien","de acuerdo","así es","asi es","eso necesito"]) or
+                    low in {"sí","si","perfecto","adelante","correcto","ok","dale"}
+                )
+            )
+            if orientation_confirmed:
                 m["orientation_confirmed"]=True
                 c=self._qa_classification(s)
                 if c["state"]=="REVISIÓN HUMANA REQUERIDA":
