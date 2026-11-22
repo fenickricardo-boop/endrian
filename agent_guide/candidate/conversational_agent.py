@@ -192,8 +192,15 @@ class ConversationalGuideQA:
         # Registration supplied naturally.
         email=self._extract_email(text); name=self._extract_name(text)
         if s.state=="REGISTRO PENDIENTE" or (email and name):
-            consent_data=any(x in low for x in ["acepto tratamiento","acepto el tratamiento","consiento tratamiento"])
-            consent_ops=any(x in low for x in ["acepto comunicaciones operativas","acepto las comunicaciones operativas","comunicaciones operativas"])
+            # Plain substring checks below can't tell "acepto tratamiento" from
+            # "no acepto tratamiento" — explicit negation/refusal phrases must
+            # win over the positive match, or a user who clearly declines
+            # consent would get silently registered anyway.
+            consent_denied=any(x in low for x in ["no acepto el tratamiento","no acepto tratamiento","no consiento","rechazo el tratamiento","no autorizo el tratamiento","no doy mi consentimiento","no acepto las comunicaciones","no acepto comunicaciones"])
+            consent_data=(not consent_denied) and any(x in low for x in ["acepto tratamiento","acepto el tratamiento","consiento tratamiento"])
+            consent_ops=(not consent_denied) and any(x in low for x in ["acepto comunicaciones operativas","acepto las comunicaciones operativas","comunicaciones operativas"])
+            if consent_denied and email and name:
+                return self._out(s,"REGISTRATION_CONSENT_REQUIRED","Entendido, respeto tu decisión. Sin aceptar el tratamiento de datos y las comunicaciones operativas no puedo crear la solicitud QA, así que no continuaré. Si cambias de opinión, dímelo y seguimos.",reference=REFS["registration"])
             if email and name and consent_data and consent_ops:
                 r=self.core.register(s,name=name,email=email,data_processing=True,operational_comms=True,marketing=("marketing" in low and "acepto marketing" in low),email_verified_qa=True)
                 m["registered"]=bool(r.get("ok"))
@@ -235,12 +242,16 @@ class ConversationalGuideQA:
             # REVISIÓN is the current state — elsewhere (e.g. PAGO PENDIENTE)
             # a loose "está bien"/"sí" could be an unrelated reply and would
             # wrongly re-open a proposal instead of progressing payment.
-            orientation_confirmed = any(x in low for x in ["esta orientación refleja", "confirmo la orientación", "sí, refleja", "si, refleja"]) or (
+            # A plain substring check can't distinguish "confirmo la
+            # orientación" from "no confirmo la orientación" — an explicit
+            # rejection must suppress the match instead of being read as one.
+            orientation_denied = any(x in low for x in ["no confirmo la orientación","no, no confirmo","esta orientación no refleja","no me sirve","no refleja lo que necesito","no es lo que necesito"])
+            orientation_confirmed = (not orientation_denied) and (any(x in low for x in ["esta orientación refleja", "confirmo la orientación", "sí, refleja", "si, refleja"]) or (
                 s.state=="ORIENTACIÓN EN REVISIÓN" and (
                     any(x in low for x in ["me sirve","eso es lo que necesito","eso es justo lo que necesito","está bien","esta bien","de acuerdo","así es","asi es","eso necesito"]) or
                     low in {"sí","si","perfecto","adelante","correcto","ok","dale"}
                 )
-            )
+            ))
             if orientation_confirmed:
                 m["orientation_confirmed"]=True
                 c=self._qa_classification(s)
@@ -250,22 +261,28 @@ class ConversationalGuideQA:
                 p=self.core.make_proposal(s,pf)
                 return self._out(s,"PROPOSAL_READY_QA","Propuesta QA disponible con valores ficticios. Debe aceptarse junto con la ventana QA antes de habilitar pago QA.",proposal=p.get("proposal"),classification=c.get("classification"),reference=REFS["proposal"])
             # Same natural-affirmative widening as the orientation confirm
-            # above, each scoped to the one state where it's unambiguous.
-            proposal_accepted = any(x in low for x in ["acepto la propuesta", "acepto propuesta"]) or (
+            # above, each scoped to the one state where it's unambiguous, and
+            # the same negation guard ("no acepto la propuesta" contains
+            # "acepto la propuesta" as a literal substring).
+            proposal_denied = any(x in low for x in ["no acepto la propuesta","no acepto propuesta","rechazo la propuesta","no acepto","no me parece bien","no estoy de acuerdo"])
+            proposal_accepted = (not proposal_denied) and (any(x in low for x in ["acepto la propuesta", "acepto propuesta"]) or (
                 s.state=="PROPUESTA DISPONIBLE" and (
                     any(x in low for x in ["me parece bien","está de acuerdo","esta de acuerdo","de acuerdo con la propuesta","acepto"]) or
                     low in {"sí","si","perfecto","adelante","correcto","ok","dale"}
                 )
-            )
+            ))
             if proposal_accepted:
                 a=self.core.accept_proposal(s,True,True)
                 return self._out(s,"PAYMENT_AVAILABLE_QA" if a.get("payment_enabled") else "PAYMENT_BLOCKED","Pago QA habilitado con valores ficticios." if a.get("payment_enabled") else "El pago QA sigue bloqueado.",payment_enabled=a.get("payment_enabled",False),reference=REFS["payment"])
-            payment_started = any(x in low for x in ["inicia el pago", "continuar al pago", "pagar ahora"]) or (
+            # "no quiero pagar ahora" contains "pagar ahora"/"quiero pagar" as
+            # a literal substring — same negation guard as above.
+            payment_denied = any(x in low for x in ["no quiero pagar","no pagar ahora","todavía no","todavia no","ahora no"])
+            payment_started = (not payment_denied) and (any(x in low for x in ["inicia el pago", "continuar al pago", "pagar ahora"]) or (
                 s.state=="PAGO DISPONIBLE" and (
                     any(x in low for x in ["quiero pagar","procede con el pago","hagamos el pago","vamos a pagar"]) or
                     low in {"sí","si","perfecto","adelante","correcto","ok","dale"}
                 )
-            )
+            ))
             if payment_started:
                 p=self.core.start_payment(s)
                 return self._out(s,"PAYMENT_STATUS_QA","Estado de pago QA actualizado.",payment=p,reference=REFS["payment"])
