@@ -53,6 +53,9 @@ z-index:0}
 .message.user .bubble{background:#0b4f75;border-color:rgba(64,192,238,.23);max-width:58%}
 .agent-mark{flex:0 0 auto;width:46px;height:46px;border:1px solid rgba(32,215,243,.34);border-radius:50%;display:grid;place-items:center;color:var(--cyan);font-size:22px;background:rgba(2,31,49,.85);box-shadow:0 0 25px rgba(22,193,231,.10)}
 .bubble{max-width:66%;padding:14px 18px;border:1px solid rgba(61,151,188,.18);background:rgba(4,37,56,.84);border-radius:12px;line-height:1.45;font-size:14px;color:#edf7fb}
+.registration-form.bubble{max-width:420px;width:100%}
+.registration-form .field-block input{width:100%;border:1px solid rgba(32,215,243,.3);background:#031c2b;color:#eefbff;border-radius:9px;padding:9px;font:inherit}
+.registration-form .field-error:empty{display:none}
 .bubble p{margin:0;white-space:pre-line}
 .message-meta{font-size:10px;color:var(--muted-2);margin-top:5px}
 .composer-zone{flex:0 0 auto;margin:0 34px 18px;border:1px solid rgba(29,172,220,.62);border-radius:14px;background:linear-gradient(180deg,rgba(5,38,58,.92),rgba(3,28,44,.95));box-shadow:inset 0 0 28px rgba(0,126,188,.06);padding:14px 16px 10px}

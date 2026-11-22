@@ -473,6 +473,41 @@ class GuideService:
             result["summary"] = self.summary(session_id, hydrated=(s, m, app_meta))
             return result
 
+    def register_via_guide(self, session_id: str, name: str, email: str, data_processing: bool=False, operational_comms: bool=False, marketing: bool=False) -> Dict[str, Any]:
+        """Structured registration for the free-text conversational path
+        (real/gemini model). Unlike chat(), this never forwards the submitted
+        name/email to the model — it's a direct form submission processed
+        locally — so it does not run the PII guard chat() applies to text
+        that gets sent to an external LLM, and it doesn't depend on the
+        brittle regex extraction (name/email/consent phrases) that free-text
+        chat relies on."""
+        with self._lock:
+            s, m, app_meta = self._hydrate(session_id)
+            name = name.strip()
+            if len(name) < 2 or not re.fullmatch(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ .'-]+", name):
+                return {"ok": False, "event": "SYNTHETIC_NAME_REQUIRED", "simulation": True, "message": "Revisa el nombre completo ingresado.", "summary": self.summary(session_id, hydrated=(s, m, app_meta))}
+            email = email.strip().lower()
+            if _synthetic_email_error(email):
+                return {"ok": False, "event": "EMAIL_FORMAT_INVALID", "simulation": True, "message": "Revisa el formato del correo.", "summary": self.summary(session_id, hydrated=(s, m, app_meta))}
+            if not (data_processing and operational_comms):
+                return {"ok": False, "event": "REGISTRATION_CONSENT_REQUIRED", "simulation": True, "message": "Necesitamos que aceptes el tratamiento de datos y las comunicaciones operativas para continuar.", "summary": self.summary(session_id, hydrated=(s, m, app_meta))}
+            r = self.runtime.core.register(s, name=name, email=email, data_processing=True, operational_comms=True, marketing=marketing, email_verified_qa=True)
+            if not r.get("ok"):
+                return {"ok": False, "event": "REGISTRATION_CORE_BLOCKED", "simulation": True, "message": r.get("reason") or "No fue posible completar el registro.", "summary": self.summary(session_id, hydrated=(s, m, app_meta))}
+            m["registered"] = True
+            q = self.runtime._next_material_question(s)
+            if q:
+                m["pending_question"] = q
+                event, message = "DIMENSIONING_QUESTION", q
+            else:
+                event, message = "REGISTRATION_ACCEPTED_QA", "Registro QA completado. Continuaré con el dimensionamiento sin pedir datos que no cambien la decisión."
+            app_meta["ui_history"].append({"role": "user", "text": f"[Registro QA] {name} · {email}"})
+            app_meta["ui_history"].append({"role": "assistant", "text": message})
+            app_meta["ui_history"] = app_meta["ui_history"][-40:]
+            self._persist(session_id, app_meta)
+            turn_count = self.repository.increment_turn(session_id)
+            return {"ok": True, "event": event, "simulation": True, "message": message, "turn_count": turn_count, "summary": self.summary(session_id, hydrated=(s, m, app_meta))}
+
     def confirm_understanding(self, session_id: str) -> Dict[str, Any]:
         with self._lock:
             s, m, app_meta = self._hydrate(session_id); flow = ensure_flow(app_meta, session_id)

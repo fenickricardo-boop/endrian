@@ -49,6 +49,14 @@ class ChatIn(BaseModel):
     message: str = Field(min_length=1, max_length=2400)
 
 
+class ChatRegisterIn(BaseModel):
+    name: str = Field(min_length=2, max_length=120)
+    email: str = Field(min_length=5, max_length=180)
+    data_processing: bool = False
+    operational_comms: bool = False
+    marketing: bool = False
+
+
 class RegistrationIn(BaseModel):
     name: str = Field(min_length=2, max_length=120)
     email: str = Field(min_length=8, max_length=180)
@@ -356,6 +364,13 @@ def chat(payload: ChatIn, request: Request):
         result={"ok":False,"event":"MODEL_NOT_CONFIGURED","simulation":True,"message":f"Falta configurar {required_model_key} para MODEL_MODE={settings.model_mode}. Usa MODEL_MODE=deterministic mientras tanto."}
         return _json_result(result,sid,fail_status=503)
     return _json_result(service.chat(sid,text),sid)
+
+
+@app.post("/api/chat/register")
+def chat_register(payload: ChatRegisterIn, request: Request):
+    sid = _session_id(request); _check_rate(request, sid)
+    result = service.register_via_guide(sid, payload.name, payload.email, payload.data_processing, payload.operational_comms, payload.marketing)
+    return _json_result(result, sid, fail_status=400)
 
 
 @app.post("/api/full-flow/understanding/confirm")

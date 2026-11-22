@@ -34,6 +34,41 @@
   function nearChatBottom(){const el=els.conversationScroll;return el.scrollHeight-el.scrollTop-el.clientHeight<96}
   function revealLatest(force=false){requestAnimationFrame(()=>requestAnimationFrame(()=>{if(!force&&!followLatest)return;const target=els.special.lastElementChild||els.history.lastElementChild;if(target)target.scrollIntoView({block:'nearest',behavior:'smooth'});else els.conversationScroll.scrollTop=els.conversationScroll.scrollHeight}))}
   function appendMessage(role,text){if(!text)return;const row=document.createElement('div');row.className=`message ${role}`;if(role==='assistant'){row.innerHTML=`<div class="agent-mark" aria-hidden="true">✦</div><div><div class="bubble"><p>${escapeHtml(text)}</p></div><div class="message-meta">${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div></div>`}else{row.innerHTML=`<div><div class="bubble"><p>${escapeHtml(text)}</p></div><div class="message-meta">${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</div></div>`}els.history.appendChild(row)}
+  function appendRegistrationForm(){
+    const row=document.createElement('div');
+    row.className='message assistant registration-form-row';
+    row.innerHTML=`<div class="agent-mark" aria-hidden="true">✦</div><div class="bubble registration-form">
+      <p class="flow-note">Utiliza únicamente datos ficticios durante esta prueba. No se enviarán correos, SMS ni verificaciones externas.</p>
+      <div class="form-grid" style="grid-template-columns:1fr">
+        <label class="field-block">Nombre completo<input id="regName" placeholder="Escribe tu nombre completo" autocomplete="name"></label>
+        <label class="field-block">Correo<input id="regEmail" type="email" placeholder="Escribe tu correo" autocomplete="email"></label>
+      </div>
+      <small class="field-error" id="regFormError" role="alert"></small>
+      <p class="flow-note">Al continuar, aceptas el tratamiento de tus datos y las comunicaciones operativas de esta prueba.</p>
+      <div class="card-actions"><button type="button" id="regSubmit" class="primary-cta">Continuar <span>→</span></button></div>
+    </div>`;
+    els.history.appendChild(row);
+    const submit=row.querySelector('#regSubmit'), nameInput=row.querySelector('#regName'), emailInput=row.querySelector('#regEmail'), errorEl=row.querySelector('#regFormError');
+    submit.onclick=async()=>{
+      const name=nameInput.value.trim(), email=emailInput.value.trim();
+      errorEl.textContent='';
+      if(!name||!email){errorEl.textContent='Completa el nombre y el correo para continuar.';return}
+      submit.disabled=true;
+      try{
+        const out=await api('/api/chat/register',{method:'POST',body:JSON.stringify({name,email,data_processing:true,operational_comms:true})});
+        row.remove();
+        appendMessage('user',`${name} · ${email}`);
+        appendMessage('assistant',out.message||'');
+        if(out.summary)session=out.summary;
+        renderAll();
+        revealLatest(true);
+      }catch(e){
+        submit.disabled=false;
+        errorEl.textContent=e.body?.message||e.message||'No fue posible completar el registro.';
+      }
+    };
+    revealLatest(true);
+  }
   function loading(on){busy=on;els.send.disabled=on;els.input.disabled=on;const old=$('#typingRow');if(old)old.remove();if(on){const row=document.createElement('div');row.id='typingRow';row.className='message assistant';row.setAttribute('role','status');row.setAttribute('aria-label','ENDRIAN está preparando la respuesta');row.innerHTML='<div class="agent-mark">✦</div><div class="bubble"><span class="loading-dot"><span></span><span></span><span></span></span></div>';els.history.appendChild(row);$('#conversationScroll').scrollTop=$('#conversationScroll').scrollHeight}}
 
   const journeySteps=[
@@ -151,7 +186,7 @@
 
   async function loadSession(){session=await api('/api/session');els.history.innerHTML='';(session.history||[]).forEach(m=>appendMessage(m.role,m.text));renderAll();followLatest=true;revealLatest(true)}
   async function finalizeConversation(){const out=await api('/api/full-flow/conversation/finalize',{method:'POST',body:'{}'});session=out.summary;editingContact=false;els.history.innerHTML='';renderAll();history.replaceState(null,'',location.pathname)}
-  async function send(text){const value=(text??els.input.value).trim();if(!value||busy)return;const shouldFollow=nearChatBottom();appendMessage('user',value);els.input.value='';loading(true);try{const out=await api('/api/chat',{method:'POST',body:JSON.stringify({message:value})});loading(false);appendMessage('assistant',out.message||'');if(out.summary)session=out.summary;renderAll();revealLatest(shouldFollow)}catch(e){loading(false);appendMessage('assistant',e.body?.message||e.message||'No fue posible procesar el mensaje.');revealLatest(shouldFollow)}}
+  async function send(text){const value=(text??els.input.value).trim();if(!value||busy)return;const shouldFollow=nearChatBottom();appendMessage('user',value);els.input.value='';loading(true);try{const out=await api('/api/chat',{method:'POST',body:JSON.stringify({message:value})});loading(false);appendMessage('assistant',out.message||'');if(out.summary)session=out.summary;renderAll();if(out.event==='REGISTRATION_REQUIRED')appendRegistrationForm();revealLatest(shouldFollow)}catch(e){loading(false);appendMessage('assistant',e.body?.message||e.message||'No fue posible procesar el mensaje.');revealLatest(shouldFollow)}}
 
   let lastDrawerTrigger=null;
   const publicDrawers=()=>[els.servicesDrawer,els.drawer,els.contactDrawer];
