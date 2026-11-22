@@ -42,10 +42,27 @@
     {title:'Revisión y pago',description:'Revisas tu propuesta y confirmas los datos antes de pagar.',states:['S2','S5','S6']},
     {title:'Pedido recibido',description:'Confirmamos tu pago y registramos tu pedido.',states:['S7','S8']}
   ];
+  // The free-text conversational path (real/gemini model) advances through its
+  // own internal state machine (session.state) and never moves full_flow past
+  // S1, so the journey panel would otherwise look frozen on "Conversación" for
+  // the whole exchange even as registration/orientation/payment progress.
+  // Map that state onto the same 4 stages as a fallback when full_flow hasn't
+  // moved yet.
+  const coreStateJourney={
+    'CONVERSACIÓN INICIAL':0,'COMPRENSIÓN PRELIMINAR':0,'REGISTRO PENDIENTE':0,
+    'DIMENSIONAMIENTO INCOMPLETO':1,'ORIENTACIÓN EN REVISIÓN':1,'REVISIÓN HUMANA REQUERIDA':1,
+    'PRECIO PENDIENTE':2,'PROPUESTA DISPONIBLE':2,'PAGO DISPONIBLE':2,'PAGO PENDIENTE':2,
+    'ORDEN CONFIRMADA':3,'MATRIZ QA COMPLETA / APTA PARA EVALUACIÓN':3,'MATRIZ EN REVISIÓN':3,
+    'REEMBOLSO CONFIRMADO':3,'REEMBOLSO PENDIENTE':3
+  };
   function summaryMarkup(s){
     const state=s?.full_flow?.state||'S0';
-    const currentIndex=Math.max(0,journeySteps.findIndex(step=>step.states.includes(state)));
-    const journeyCompleted=['S7','S8'].includes(state);
+    let currentIndex=Math.max(0,journeySteps.findIndex(step=>step.states.includes(state)));
+    let journeyCompleted=['S7','S8'].includes(state);
+    if(['S0','S1'].includes(state) && coreStateJourney[s?.state]!==undefined){
+      currentIndex=coreStateJourney[s.state];
+      journeyCompleted=currentIndex>=journeySteps.length-1;
+    }
     return `<div class="journey-heading" data-panel-mode="journey"><h2>Tu recorrido</h2></div><div class="summary-list">${journeySteps.map((step,i)=>{const status=journeyCompleted||i<currentIndex?'done':i===currentIndex?'current':'pending';const statusLabel=status==='done'?'Completado':status==='current'?'Etapa actual':'Pendiente';return `<div class="summary-step ${status}"${status==='current'?' aria-current="step"':''}><span class="step-dot">${status==='done'?'✓':''}</span><strong>${escapeHtml(step.title)}</strong><p>${escapeHtml(step.description)}</p><small>${statusLabel}</small></div>`}).join('')}</div>${state==='SH'?`<div class="journey-notice">Necesitamos revisar un punto antes de continuar.</div>`:''}`;
   }
   function renderSummary(s){session=s||session||{};const html=summaryMarkup(session);els.desktopSummary.innerHTML=html;els.mobileSummary.innerHTML=html}
