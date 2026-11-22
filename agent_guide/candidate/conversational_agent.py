@@ -64,6 +64,12 @@ class ConversationalGuideQA:
     @staticmethod
     def _extract_name(text:str)->Optional[str]:
         m=re.search(r"(?:me llamo|mi nombre es)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,50}?)(?=,|\.| y mi correo| correo|$)",text,re.I)
+        if m: return m.group(1).strip()
+        # "Soy <Nombre>" is a common natural alternative to "me llamo"/"mi
+        # nombre es". Only recognized at a sentence boundary and requiring
+        # each captured word to be capitalized (a name), to avoid matching
+        # unrelated uses of "soy" (e.g. "soy flexible con el precio").
+        m=re.search(r"(?:^|[,.]\s+)(?i:soy)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){0,3})(?=,|\.| y mi correo| correo|$)",text)
         return m.group(1).strip() if m else None
 
     def _extract_dimensions(self,text:str)->Dict[str,Any]:
