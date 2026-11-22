@@ -38,7 +38,11 @@ class Settings:
     app_env: str = os.getenv("APP_ENV", "local")
     model_mode: str = os.getenv("MODEL_MODE", "deterministic").strip().lower()
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-5.6-terra")
-    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+    # "-lite" has its own, far less restrictive free-tier daily quota than
+    # the full "flash" line (the latter is capped at ~20 requests/day on a
+    # free API key) and was validated to produce the same structured output
+    # reliably for this narrow extraction task.
+    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
     max_output_tokens: int = _int("OPENAI_MAX_OUTPUT_TOKENS", 700)
     # Gemini's "thinking" tokens are billed against the same output budget as
     # the actual JSON answer, so it needs a higher ceiling than OpenAI's

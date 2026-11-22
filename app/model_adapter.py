@@ -154,14 +154,20 @@ class GeminiModelAdapter:
             "task": "interpret_next_user_message",
         }
         instructions = SYSTEM_INSTRUCTIONS + "\nCurrent QA context (non-authoritative): " + repr(context)
-        config = types.GenerateContentConfig(
+        config_kwargs = dict(
             system_instruction=instructions,
             response_mime_type="application/json",
             response_schema=_gemini_response_schema(),
             max_output_tokens=self.max_output_tokens,
             temperature=0.2,
-            thinking_config=types.ThinkingConfig(thinking_budget=0),
         )
+        # "-lite" models don't support thinking at all and reject this field
+        # outright (400 INVALID_ARGUMENT); non-lite models bill "thinking"
+        # tokens against the same output cap as the JSON answer, so it must
+        # be explicitly disabled there to avoid truncating mid-response.
+        if "lite" not in self.model:
+            config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
+        config = types.GenerateContentConfig(**config_kwargs)
         last_error = None
         for attempt in (1, 2):
             try:
