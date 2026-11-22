@@ -256,7 +256,14 @@ class ConversationalGuideQA:
             o=self.core.build_orientation(s)
             if o.get("blocked"):
                 return self._out(s,"ORIENTATION_BLOCKED",o["reason"],reference=REFS["registration"])
-            return self._out(s,"ORIENTATION_READY","Preparé una Orientación recomendada QA para que la revises y corrijas antes de continuar.",orientation=o.get("orientation"),extracted=extracted,required_action="CONFIRM_OR_CORRECT_ORIENTATION",reference=REFS["orientation"])
+            orientation=o.get("orientation") or {}
+            caps=", ".join(orientation.get("capabilities") or [])
+            msg=(
+                f"Preparé esta Orientación recomendada QA: {orientation.get('recommended','')} "
+                f"Incluye: {caps}. {orientation.get('preliminary_scope','')} "
+                'Escribe «confirmo la orientación» si refleja lo que necesitas, o cuéntame qué corregir.'
+            )
+            return self._out(s,"ORIENTATION_READY",msg,orientation=orientation,extracted=extracted,required_action="CONFIRM_OR_CORRECT_ORIENTATION",reference=REFS["orientation"])
 
         return self._out(s,"NO_OP","Conservo el contexto de la solicitud. Indica el siguiente dato o acción relacionada con el estado actual.",reference=REFS["states"])
 
