@@ -249,13 +249,30 @@ class ConversationalGuideQA:
                 pf=QA_FIXTURES["proposal_professional"] if c.get("classification")=="Profesional" else QA_FIXTURES["proposal_simple"]
                 p=self.core.make_proposal(s,pf)
                 return self._out(s,"PROPOSAL_READY_QA","Propuesta QA disponible con valores ficticios. Debe aceptarse junto con la ventana QA antes de habilitar pago QA.",proposal=p.get("proposal"),classification=c.get("classification"),reference=REFS["proposal"])
-            if any(x in low for x in ["acepto la propuesta", "acepto propuesta"]):
+            # Same natural-affirmative widening as the orientation confirm
+            # above, each scoped to the one state where it's unambiguous.
+            proposal_accepted = any(x in low for x in ["acepto la propuesta", "acepto propuesta"]) or (
+                s.state=="PROPUESTA DISPONIBLE" and (
+                    any(x in low for x in ["me parece bien","está de acuerdo","esta de acuerdo","de acuerdo con la propuesta","acepto"]) or
+                    low in {"sí","si","perfecto","adelante","correcto","ok","dale"}
+                )
+            )
+            if proposal_accepted:
                 a=self.core.accept_proposal(s,True,True)
                 return self._out(s,"PAYMENT_AVAILABLE_QA" if a.get("payment_enabled") else "PAYMENT_BLOCKED","Pago QA habilitado con valores ficticios." if a.get("payment_enabled") else "El pago QA sigue bloqueado.",payment_enabled=a.get("payment_enabled",False),reference=REFS["payment"])
-            if any(x in low for x in ["inicia el pago", "continuar al pago", "pagar ahora"]):
+            payment_started = any(x in low for x in ["inicia el pago", "continuar al pago", "pagar ahora"]) or (
+                s.state=="PAGO DISPONIBLE" and (
+                    any(x in low for x in ["quiero pagar","procede con el pago","hagamos el pago","vamos a pagar"]) or
+                    low in {"sí","si","perfecto","adelante","correcto","ok","dale"}
+                )
+            )
+            if payment_started:
                 p=self.core.start_payment(s)
                 return self._out(s,"PAYMENT_STATUS_QA","Estado de pago QA actualizado.",payment=p,reference=REFS["payment"])
-            if any(x in low for x in ["pago confirmado", "simula pago confirmado"]):
+            payment_confirmed = any(x in low for x in ["pago confirmado", "simula pago confirmado"]) or (
+                s.state=="PAGO PENDIENTE" and any(x in low for x in ["ya pagué","ya pague","listo, pagado","confirmo el pago","pago realizado","ya realicé el pago","ya realice el pago"])
+            )
+            if payment_confirmed:
                 if s.state!="PAGO PENDIENTE":
                     return self._out(s,"PAYMENT_CONFIRMATION_BLOCKED","No se puede confirmar un pago QA que no fue iniciado desde PAGO DISPONIBLE.",reference=REFS["payment"])
                 r=self.core.resolve_payment(s,"confirmed")
