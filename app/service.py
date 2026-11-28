@@ -59,6 +59,7 @@ from .full_flow import (
     utc_now,
     validate_client_output,
 )
+from .mailer import send_email
 from .model_adapter import DeterministicModelAdapter, GeminiModelAdapter, OpenAIModelAdapter
 from .model_signal_policy import DeterministicModelSignalPolicy
 from .session_repository import SessionRepository
@@ -171,6 +172,38 @@ class GuideService:
             s.interpreted_need = proposal["interpreted_need"]
         if proposal.get("objective") and s.original_need:
             s.objective = proposal["objective"]
+
+    def _send_order_confirmation_email(self, s: Session, result: Dict[str, Any]) -> None:
+        """Best-effort real email via Gmail SMTP. No-ops silently unless both
+        GMAIL_SENDER_EMAIL and GMAIL_APP_PASSWORD are configured, so this is
+        inert by default and never blocks the chat response on failure."""
+        if not self.settings.email_enabled:
+            return
+        registration = s.registration or {}
+        to_email = (registration.get("email") or "").strip()
+        if not to_email:
+            return
+        order = (result.get("data") or {}).get("order") or {}
+        name = registration.get("name") or "cliente"
+        body = (
+            f"Hola {name},\n\n"
+            f"Confirmamos tu pedido de prueba con ENDRIAN.\n\n"
+            f"Orden: {order.get('order_id', '')}\n"
+            f"Precio: {order.get('price', '')} {order.get('currency', '')}\n"
+            f"Plazo estimado: {order.get('delivery_window', '')}\n\n"
+            "Este es un entorno de prueba (QA): no hay cobro real ni producción asociada.\n\n"
+            "ENDRIAN"
+        )
+        error = send_email(
+            sender_email=self.settings.gmail_sender_email,
+            app_password=self.settings.gmail_app_password,
+            to_email=to_email,
+            subject=f"Pedido de prueba confirmado · {order.get('order_id', '')}",
+            body=body,
+        )
+        result.setdefault("data", {})["email_sent"] = error is None
+        if error:
+            result["data"]["email_error"] = error
 
     def _record_model(self, app_meta: Dict[str, Any], result, proposal: Optional[Dict[str, Any]]):
         app_meta["model_trace"].append({
@@ -459,6 +492,10 @@ class GuideService:
                         result["message"] = proposal["functional_answer"]
                     elif action == "REFUSE_IMPLEMENTATION_DETAIL" and proposal.get("functional_answer"):
                         result["message"] = proposal["functional_answer"]
+                if result.get("event") == "ORDER_CONFIRMED_QA":
+                    self._send_order_confirmation_email(s, result)
+                    if result.get("data", {}).get("email_sent"):
+                        result["message"] = result.get("message", "") + " Te enviamos la confirmación a tu correo."
 
             self._record_model(app_meta, model_result, proposal)
             app_meta["ui_history"].append({"role": "user", "text": message})

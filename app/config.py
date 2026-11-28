@@ -48,6 +48,10 @@ class Settings:
     # the actual JSON answer, so it needs a higher ceiling than OpenAI's
     # reasoning-effort-based accounting to avoid truncating mid-response.
     gemini_max_output_tokens: int = _int("GEMINI_MAX_OUTPUT_TOKENS", 2048)
+    # Real order-confirmation email via Gmail SMTP. Optional: unset by
+    # default, in which case no email is ever sent (unchanged behavior).
+    gmail_sender_email: str = os.getenv("GMAIL_SENDER_EMAIL", "")
+    gmail_app_password: str = os.getenv("GMAIL_APP_PASSWORD", "")
     session_ttl_seconds: int = _int("SESSION_TTL_SECONDS", 86400)
     max_turns_per_session: int = _int("MAX_TURNS_PER_SESSION", 30)
     ip_requests_per_minute: int = _int("IP_REQUESTS_PER_MINUTE", 60)
@@ -68,6 +72,10 @@ class Settings:
     @property
     def real_model_enabled(self) -> bool:
         return self.model_mode in {"real", "gemini"}
+
+    @property
+    def email_enabled(self) -> bool:
+        return bool(self.gmail_sender_email and self.gmail_app_password)
 
     @property
     def qa_control_enabled(self) -> bool:
